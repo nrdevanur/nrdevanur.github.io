@@ -1,0 +1,241 @@
+
+\section{Online Bipartite Matching}
+\subsection{Bipartite Matching}
+
+\textbf{INPUT}:  Bipartite Graph $G=(V=(L,R),E)$ and w.l.o.g. $|L| = |R| = n$. $E \subseteq L \times R$. 
+
+\textbf{OUTPUT:} A matching $M \subseteq E$ such that no vertex has $> 1$ incident edge in the matching $M$. 
+
+\textbf{OBJECTIVE:} Find a matching of maximum size.
+
+Terminology:
+\begin{itemize}
+\item \textit{$i$ is \textbf{matched} to $j$ } to denote that $(i,j) \in M$.
+\item A matching is \textbf{\textit{perfect}} if every vertex is part of the matching.
+\end{itemize}
+
+
+In \textit{online bipartite matching}, the structure of $G$, specifically the vertices in $R$, is revealed over time.
+
+\subsection{Online BP Matching}
+\label{sec:online-bipartite-matching}
+
+\textbf{DEFINITION:}
+\begin{enumerate}
+\item Vertices in $R$ ``arrive'' 1-by-1
+\item A vertex is matched immediately upon arrival
+\item Matches, once made, cannot be reversed
+\end{enumerate}
+
+An ``instance'' $I$ of the O.B.M. consists of $G$ and an ordering  of arrival of vertices in $R$.
+
+Consider an algorithm \texttt{ALG}.
+
+\begin{itemize}
+\item $\mathtt{ALG}(I) \triangleq $ number of matches picked by \texttt{ALG} on instance $I$.
+\item $\mathtt{OPT}(I) \triangleq$ size of the max. matching in $G$.
+\end{itemize}
+
+$\mathtt{ALG}$ has a competitive ratio (CR) of $\alpha$ if $\forall I \mathtt{ALG}(I) \geq \alpha * \mathtt{OPT}(I)$. We say: $\mathtt{ALG}$ is $\alpha$-competitive. Also, we see that, no matter what algorithm we use, we will get an upper bound $a \leq \frac{1}{2}$.
+
+
+\begin{algorithm}{Greedy Algorithm}
+  \label{alg:greedy-algorithm}
+  Match (to an arbitrary neighbor) if possible. There is no ``intelligence'' as to how to break the ties when there are multiple matches. 
+  \begin{itemize}
+  \item \# of vertices matched by $\mathtt{Greedy-ALG} \geq$ \# of vertices matched by $\mathtt{OPT}$
+  \item \# of edges matched by $\mathtt{Greedy-ALG} = \frac{1}{2}$ vertices matched by $\mathtt{ALG}$.
+  \item $\mathtt{Greedy-ALG}(I)\geq \frac{1}{2} \mathtt{OPT}(I)$
+  \end{itemize}
+\end{algorithm}
+
+Now, consider a random algorithm $\mathtt{Rand-ALG}$ that picks matchings by flipping a coin. In the context of Fig. 2, we see that with probablity (w.p.) $\frac{1}{2}$, $\mathtt{Rand-ALG}(I) = 2$ and w.p. $\frac{1}{2}, \mathtt{Rand-ALG}(I) = 1$. Thus, $E[\mathtt{Rand-ALG}(I)] = 3/2$. Thus, for random algorithms we redefine the competitive ratio as
+\begin{equation}
+  \label{eq:competitive-ratio}
+  E[\mathtt{ALG}(I)] \geq \alpha * \mathtt{OPT}(I)  
+\end{equation}
+
+For randomized algorithms, the upper bound on the competitive ratio is $1 - \frac{1}{e}$.
+
+Consider Fig. 3, where there is a perfect matching $1-a$, $2-b$, $3-c$, etc. Divide both left and right sides in half, and draw edges from bottom half of $L$ to top half of $R$. Then, in a purely random matching, most of $L_{lower}$ matches to $R_{upper}$, and $R_{lower}$ is then impossible to match. So, we need to be smarter than this.
+
+\subsection{Fractional Bipartite Matching}
+\label{sec:frac-bm}
+
+
+\begin{algorithm}{Fractional BM}
+  $\forall $ edge $(i,j)$ $x_{ij} \in [0,1]$ amount of edge is picked up in the matching. $\forall$ vertex $i$ $\sum_{j \in i}X_{ij} \leq 1$. %better denoted \sum_i \in L x_{ij} \leq 1. http://www.cs.cornell.edu/courses/CS6820/2012fa/handouts/online-matching.pdf
+
+\textbf{OBJECTIVE:}
+\begin{equation}
+  \label{eq:fractional-bm-objective}
+  \max_{(i,j) \in E} x_{ij}
+\end{equation}
+
+\end{algorithm}
+
+
+We see that 
+\begin{equation*}
+  X_{ij} =
+  \begin{cases}
+    1 & (i,j) \in M \\
+    0 & \mbox{otherwise}
+  \end{cases}
+\end{equation*}
+\begin{equation*}
+  x_{ij} = P_{1}[X_{ij} = 1]
+\end{equation*}
+
+$\forall i \sum_{j \tilde i} X_{ij} \leq 1 \rightarrow E[\sum_{j \tilde i} X_{ij}] \leq 1$ $\Rightarrow$ $\sum_{j} x_{ij} \leq 1$. 
+\begin{equation*}
+  \sum_{(i,j) \in E} x_{ij} = E[\sum_{(i,j) \in E} X_{ij}] = E[\mathtt{ALG}(I)]
+\end{equation*}
+
+From this we see that randomized algorithms can be written as deterministic fractional algorithm (DFA). The upper bound in DFA $\Rightarrow$ upper bound in randomized algorithm.
+
+\subsubsection{Upper Bound on Fractional BM}
+\label{sec:upper-bound-fract}
+When we get a vertex $j \in R$, we divide it equally among all of the incident $i \in L$ that are not completely matched. Doing this repeatedly, the vertices in $L$ fill up and reach 1. For large $n$, we see that the first $n$ we match fully and the rest we do not match at all. We see that the $i$th vertex got
+\begin{equation*}
+  \frac{1}{n} + \frac{1}{n-1} + ... + \frac{1}{i} = H_{n} - H_{i+1} 
+\end{equation*}
+Setting the above $=1$, % catch up on this.
+
+
+In the situation where we do not divide equally, we become strictly worse off. This proves the upper bound of $1 - \frac{1}{e}$. This means that no fractional algorithm can do better than this, and no randomized algorithm can do better than this
+
+
+\subsubsection{What about algorithms?}
+
+\paragraph{Water Level Algorithm.} Objective: find a fractional matching. Consider the water level algorithm. The LHS are bins for water, and the RHS are sources of water. All bins have unit capacity. When you are filling bins, fill the lowest one. When you have multiple bins at the same lowest level, divide the water equally.
+
+Terminology:
+\begin{itemize}
+\item $X_{ij} = $ fraction of edge $(i,j)$
+\item $y_{i} = \sum_{j \tilde i} x_{ij} \approxeq $ level of  water in bin $i$
+\item When $j$ arrives, repeate:
+  \begin{itemize}
+  \item $\forall$ vertices $i \in \arg \min_{i'} \{ y_{i'}\}$ increment $x_{ij}$ by $dx$
+  \end{itemize}
+\item Until either $\sum_{i \tilde j} x_{ij} = 1$ or $\arg \min _{i'} \{y_{i'}\} = 1$.
+\end{itemize}
+
+\paragraph{How do we analyse this algorithm?} Consider the greedy algorithm, which matches to any arbitrary neighbor which is not yet matched. The algorithm always gets at least half optimal. Denote by $\alpha_{i}$ to be the total money ($50$ cents from a dollar) placed on $i$ by \texttt{ALG}. $\beta_{j} \in L$ is the total money placed on $j \in R$ by \texttt{ALG}. Let $g(x) = e^{x-1}$. 
+
+\begin{itemize}
+\item $g(0) = 1/e$
+\item $g(1) = 1$
+\item $\int_{0}^{a} g(x) dx = g(a) - (1/e)$
+\end{itemize}
+
+In a matching, consider a quantity $dx$ which gets split between $i$ and $j$. $i$ gets $dx * g(y_{i})$ (and $\alpha_{i}$ gets incremented by that much), and $j$ gets $dx(1 - g(y_{i}))$ (and $\beta_{j}$) gets incremented by that much. 
+
+Considering $a_{i}$ as a function, 
+\begin{equation*}
+  \alpha_{i} = \int_{0}^{y_{i}^{f}} g(y_{i}) dy_{i} = g(y_{i}^{f}) - (1/e)
+\end{equation*}
+where $y_{i}^{f}$ denotes a ``final'' value. If $y_{i}^{f} = 1$, then $\alpha_{i} = g(1) - 1/e = 1-(1/e)$. OTOH, suppose $y_{i}^{f} < 1$, then $\sum_{i \tilde j} x_{ij} = 1$, meaning $j$ was completely matched before $i$. It must also be the case that $\beta_{j}\geq 1 - g(y_{i}^{f})$. All this means that
+\begin{equation*}
+  \alpha_{i} + \beta_{j} = g(y_{i}^{f} - (1/e) + 1 - g(y_{i}^{f}) = 1 - (1/e).
+\end{equation*}
+
+The question is, where did $g(\cdot)$ come from?
+\subsubsection{Derivation of $g(\cdot)$}
+Denote $\int g(x) dx = G(x)$. Then
+\begin{equation*}
+  \alpha_{i} = \int_{0}^{y_{i}^{f}} g(y_{i}) dy_{i} = g(y_{i}^{f}) - (1/e) = G(y_{i}^{f}) - G(0)
+\end{equation*}
+If $y_{i}^{f}$ is 1, then $\alpha_{i} = 1  - (1/e) = G(1) - G(0) \geq \gamma$.
+\begin{equation*}
+    \alpha_{i} + \beta_{j} 
+    \geq \underbrace{G(y_{i}^{f}) - G(0)}_{\alpha_{i}} + \underbrace{1 - g(y_{i}^{f})}_{\beta_{i}} \geq \gamma \forall y_{i}^{f} \in [0,1]
+\end{equation*}
+Differentiating the above and setting to 0,
+\begin{equation*}
+  g(y_{i}^{f}) - \frac{dg}{d y_{i}^{f}} = 0 \Rightarrow   g(y_{i}^{f}) = \frac{dg}{d y_{i}^{f}} \forall y_{i}^{f} \in [0,1]
+\end{equation*}
+which we can solve as
+\begin{align*}
+  \int dy &= \int dg/g \\
+  y &= ln g + c \\
+  e^{y} = g * e^{c} \\
+  g =e^{y-c} \\ 
+  G = e^{y-c}.
+  1-G(0) \geq \gamma \\
+  1 - e^{-c} \geq \gamma \\
+  G(1) - G(0) \geq \gamma \\
+  g(1) \leq 1 \\
+  e^{1-c} \leq 1  \Rightarrow \\
+c \cdot 1 \\
+c = 1 \mbox{is the optimal}
+\end{align*}
+
+The above differential equation and boundary condition are what derives the $g(\cdot)$ function.
+
+\subsubsection{Fractional Matching LP}
+\begin{align*}
+  \max &\sum_{i,j \in E}  x_{ij} \mbox{s.t.} \\
+  &\forall i \in L \sum_{j \tilde i} x_{ij } \leq 1  ~~~(\alpha_{i}) \\
+  &\forall j \in R \sum_{i \tilde j} x_{ij } \leq 1  ~~~(\beta_{i}) \\   
+  \forall (i,j) \in E x_{ij} \geq 0
+\end{align*}
+The dual of this is
+\begin{align*}
+  \min &\sum_{i} \alpha_{i} + \sum_{j} \beta_{j} \\
+  &\forall (ij \in E) \alpha_{i} + \beta_{j} \geq 1 \\
+  &\alpha_{i}\beta_{j} \geq 0.
+\end{align*}
+
+Weak duality says that feasible primal $\leq$ OPT $\leq$ feasible dual. We will show that feasible primal and feasible dual are within $\gamma$ of each other. We can think of this as that each $i$ makes an offer, and $j$ picks the best offer.
+
+\subsubsection{$b-$matching (KP-2000)}
+This is an integral matching. But, every vertex $i \in L$ can be matched $b$ times. Every $j \in R$ can be matched only once. They give a $1 - (1/e)$ competitive algorithm. The assignment is to derive a proof of $1 - (1/e)$ based on the proof in class. Can prove to analysis to KP 2000.
+
+\section{Adwords (Budgeted Allocation) Problem}
+\begin{itemize}
+\item Given a set of advertisers
+\item Each $i \in L$ has a budget $B_{i}$
+\item Set of ``queries'', $R$
+\item $\forall j \in R$, $\forall i \in L$, there is a bid $b_{ij}$.
+\item Each query can be matched to $\leq 1$ advertiser
+\item \textbf{Objective:} Maximize for each advertiser 
+  \begin{equation*}
+    \sum_{j} \min \{ \sum_{j:j \rightarrow i} b_{ij}, B_{i} \}
+  \end{equation*}
+\end{itemize}
+
+
+In the adwords problem, we assume that $b_{ij}/B_{i} << 1$, meaning each individual bid is well under the total budget.
+
+\subsection{Fractional Budget Allocation}
+Assume fractional matching: $x_{ij}$ is the fraction of $j$ that is matched to $i$. Then the matching constraints become $\sum_{i} x_{ij} \leq 1$.
+The new objective is:
+  \begin{equation*}
+\max \sum_{i,j} b_{ij} x_{ij}
+  \end{equation*}
+
+Note that is the bids get smaller and smaller, the Budgeted Allocation problem becomes the fractional budget problem.
+
+\subsubsection{Fractional BA LP and Dual}
+LP:
+\begin{align*}
+  \max &\sum_{i,j} b_{ij} x_{ij} &\mbox{s.t.} \\
+  &\forall j \sum_{i} x_{ij} \leq 1 &(\beta_{j}) \\
+  &\forall i \sum_{j} x_{ij} \leq 1 &(\alpha_{i}) \\
+  x_{ij} \geq 0
+\end{align*}
+
+Dual:
+\begin{align*}
+  \min &\sum_{i} \alpha_{i} B_{i} + \sum_{j} \beta_{j} \mbox{s.t.} \\
+  &\forall ij \beta_{j} + \alpha_{i} b_{ij} \geq b_{ij} \\
+  &\alpha_{i}, \beta_{j} \geq 0
+\end{align*}
+
+Suggested exercise: Extend the primal dual analysis from class to the functional BA problem.
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "online_opt_notes"
+%%% End: 

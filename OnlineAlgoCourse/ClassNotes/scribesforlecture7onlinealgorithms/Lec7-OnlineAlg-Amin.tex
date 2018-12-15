@@ -1,0 +1,333 @@
+% This is a sample file for the Undergraduate Faculty Program at
+% PCMI, containing one lecture 
+%
+%   What is a Partial Differential Equation?
+%
+%  from the Park City Lectures of Andrew J. Bernoff.
+%
+% The sample file illustrates the use of epsf.tex to include postscript 
+% graphics, as well as various "AmS-LaTeX" constructions from the amsmath
+% package (which is automatically loaded by the pcms-l document class).
+% To run this file you need the files 
+%
+%        pcms-l.cls and pcmslmod.tex
+%
+\documentclass[lecture,11pt,]{pcms-l}
+\input pcmslmod.tex  % v.1.2
+%\input epsf.tex
+\usepackage{amssymb} % this command would have loaded all the extra symbols,
+% authors should not define these, they will be defined by the volume editors
+%\def\currentvolume{3}
+%\def\currentyear{1993}
+
+% EQUATION NUMBERING AND THEOREM SETUP
+%\numberwithin{section}{chapter}
+%\numberwithin{equation}{chapter}
+%\numberwithin{section}{section}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{exercise}{Exercise}
+\newtheorem{problem}{Problem}
+\newtheorem{example}{Example}
+\newtheorem*{remark}{Remark}
+\newtheorem*{sketch}{Sketch of Proof}
+\newtheorem*{claim}{Claim}
+% Set enumerate to use letters, not numbers for problem parts.
+\renewcommand{\theenumi}{\alph{enumi}}
+\renewcommand{\labelenumi}{(\theenumi)}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Amin's MACROS:
+\usepackage{enumerate,amsmath,color,picture}
+\newcommand{\beqa}{\begin{equation} \begin{aligned}}
+\newcommand{\eeqa}{\end{aligned} \end{equation}}
+\newcommand{\beqas}{\begin{equation*} \begin{aligned}}
+\newcommand{\eeqas}{\end{aligned} \end{equation*}}
+\newcommand{\bnum}{\begin{enumerate}}
+\newcommand{\enum}{\end{enumerate}}
+\newcommand{\para}[1]{{\bf\noindent#1}}
+
+\newcommand{\R}{\mathcal{R}}
+\renewcommand{\L}{\mathcal{L}}
+\newcommand{\U}{\mathcal{U}}
+\renewcommand{\H}{\mathcal{H}}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Pc}{\mathcal{P}}
+\newcommand{\E}{\mathbb{E}}
+\renewcommand{\P}{\mathbb{P}}
+
+\newcommand{\B}{B}
+
+\newcommand{\opt}{\mathrm{OPT}}
+\newcommand{\alg}{\textrm{ALG}}
+\newcommand{\baropt}{\overline{\opt}}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+
+\mainmatter
+\setcounter{page}{1}
+
+%\LogoOn
+\lectureseries[Online Algorithms]{Online Algorithms}
+\setcounter{lecture}{6} % To present Lec 7
+\setcounter{chapter}{0}
+\lecture{}
+
+\auth[Amin Jalali]{Inscribed by: Amin Jalali} 
+\date{January 30, 2013}
+%\vfill
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Review}
+Recall from previous lectures that we have already covered the following models:
+
+\indent\para{Adversarial Model} \\
+\indent\para{Random Order Model} where unlike the adversarial model, the order is random and we have a near 1 approximation of the optimal value as the result. This is in fact equivalent to \emph{sampling without replacement}.\medskip
+
+Today, we will discuss a model where we perform \emph{sampling with replacement} and, as we will see, it will lead to better approximation results. 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\section{i.i.d.~model with unknown distribution}
+Recall the bipartite matching problem where an offline vertex set $\L$ is given. Moreover, the vertices in $\R$ are sampled (independently and identically) from a given probability distribution with finite support $\hat\R$ to which the algorithm is blind.
+	\bnum[\indent -]
+	\item Each $j\in\hat\R$ is identified by its neighbors in $\L$
+	\item The probability of picking vertex $j$ is $p(j)$ with $\sum_{j\in\hat\R} p(j) = 1$
+	\enum
+
+This probability distribution corresponds to the so called \emph{distribution graph} with left hand nodes $\L$ and right hand nodes $\hat\R$ with corresponding probabilities from $p(\cdot)\,$. We will have the \emph{actual graph} via $m$ i.i.d.~samples of this distribution graph.
+
+\begin{remark}
+We assume that $m$, the number of vertices that arrive, is known to the algorithm. 
+\end{remark}
+
+Notice that in this analysis, both $\opt$ and $\alg$ are random variables. In fact, the value of $\opt$ depends on the arriving vertices. Thus, we will look for a guarantee of the form 
+\beqa	\label{eq:EoptEalg}
+\E[\alg] \;\geq\; \gamma\cdot\E[\opt]
+\eeqa
+as well as a statement in the concentration form as
+\beqa	\label{eq:optalg}
+\alg \geq \gamma\cdot \opt \;\; \text{holds with high probability}.
+\eeqa
+
+
+
+\begin{definition}
+Define the \emph{expected instance} similar to distribution graph where each node $j$ has a \emph{supply} of $p(j)\cdot m$ which is equal to the expected number of the times we see $j$ in the online process. 
+\end{definition}
+\begin{definition}
+Denote the deterministic value $\baropt$ as the $\opt$ value over the \emph{expected instance} such that 
+\[
+\baropt \;\geq\; \E[\opt]\,.
+\]
+\end{definition}
+This definition allows us to only prove the following sufficient condition to ensure \eqref{eq:EoptEalg},
+\beqa
+\E[\alg] \geq \gamma\cdot \baropt \,.
+\eeqa
+
+
+
+
+
+With these definitions we have the following \emph{expected LP},
+\beqa\label{expLP}
+\baropt =   \max 		&\quad \textstyle\sum_{i,j} x_{ij}		&& \\
+		\text{s.t} 		&\quad \textstyle\sum_j x_{ij} \leq 1 		&&\quad \text{for all }i\in\L\\
+					&\quad \textstyle\sum_i x_{ij} \leq m\cdot p(j)  &&\quad \text{for all }j\in\hat\R\\
+&\quad x_{ij} \geq 0 &&\quad \text{for all }i,j \,.
+\eeqa
+
+
+\begin{lemma}[Main result] 
+$\baropt \geq \E[\opt]\,$.
+\end{lemma}
+\begin{proof}
+In $\opt$, define the following set of indicator variables
+\beqas
+X_{ij} = \begin{cases}  1  & \text{if some copy of $j$ is matched to $i$} \\ 0 & \text{otherwise}\,. \end{cases}
+\eeqas
+$X_{ij}$ is a random variable because it depends on the sample we got. Moreover, define $x_{ij} = \E[X_{ij}]\,$. This implies
+\beqas
+\begin{cases}
+\forall i: & \sum_{j} X_{ij} \leq  1   \Rightarrow \sum_{j} x_{ij} \leq  1 \\
+\forall j: & \sum_{i} X_{ij} \leq  \text{\#of times $j$ appears in $\R$}  \Rightarrow \sum_{i} x_{ij} \leq p(j)\cdot m \,.
+\end{cases}
+\eeqas
+Thus, $\{x_{ij}\}_{i,j}$ is a feasible solution to the LP in \eqref{expLP} and we have
+\[
+\sum_{i,j} x_{ij} = \E[\sum_{i,j} X_{ij} ] = \E[\opt] \leq \baropt \,.
+\]
+\end{proof}
+
+
+\begin{theorem}
+Greedy is $(1-\frac{1}{e})-$competitive in the i.i.d.~model with \emph{unknown} (to the algorithm) distribution. 
+\end{theorem}
+\begin{proof}
+Consider dividing $\L$ into the set of matched ($\U$) and unmatched vertices. 
+
+Notice that the probability that a new vertex in $\R$ can be matched is equal to the probability of that vertex having  neighbor in $\U\,$. Following this definition, we present an auxiliary algorithm.
+
+\para{Hypothetical Algorithm:} Given $j\,$, match it to $i$ with probability $\frac{X_{ij}}{p(j)\cdot m}\,$. This is clearly worse than a greedy approach and we will use this fact later. 
+Now, consider $j$ which arrives with probability $p(j)\,$. Thus, for a given $i\,$, the probability that $i$ gets matched in one step is 
+\[
+\sum_j p(j)\cdot \frac{X_{ij}}{p(j)\cdot m} = \frac{X_{ij}}{ m}\,.
+\]
+Therefore, the probability that this hypothetical algorithm matches something to $\U$ is equal to $\sum_{i\in\U,\, j} \frac{X_{ij}}{m}\,$. This, from definition of $X_{ij}\,$, gives, 
+\[
+\alg(t) = |\L\backslash\U| \geq \sum_{i\in\U,\, j} X_{ij}
+\]
+which together with $\baropt = \sum_{i,\, j} X_{ij}$ gives $\baropt - \alg(t) \leq \sum_{i\in\U,\,j} X_{ij}\,$. Thus, we have
+\beqas
+\E\left[\alg(t+1) \mid \alg(t)\right]
+&= \alg(t) + \P [\text{Greedy matches a vertex in $\U$}] \\
+&\geq \alg(t) + \P [\text{Hypothetical algorithm matches a vertex in $\U$}] \\
+&\geq \alg(t) + ( \textstyle\sum_{i\in\U,\, j\in\hat\R} X_{ij}) /m \\
+&\geq \alg(t) + ( \baropt  - \alg(t)) /m \\
+\eeqas
+and results in
+\beqas
+\E\left[\baropt - \alg(t+1) \mid \alg(t)\right]
+&\leq \baropt - \alg(t) - ( \baropt  - \alg(t)) /m \\
+&= (\baropt - \alg(t))(1-1/m)
+\eeqas
+which finally yields
+\beqas
+\E \left[ \baropt - \alg \right] \leq \baropt (1-\tfrac{1}{m})^m \leq \tfrac{\baropt}{e} \Rightarrow \E[\alg] \geq (1-\tfrac{1}{e})\baropt
+\eeqas
+~\medskip
+\end{proof}
+
+
+\para{Suggested Exercise.} Generalize the presented approach to (Integral) Budgeted Allocation problem without the assumption $b_{ij} \ll \B_i\,$. 
+
+
+
+\section{$\B$-Matching}
+Consider the $\B$-Matching problem in which each vertex $i\in\L$ can be matched $\B_i$ times and each $j\in\R$ only once. We assume $\B_i\geq K\,$.
+
+\begin{remark}
+We will show that as $\B_i$ increases, the guarantee goes to 1. However, on the contrary to the guarantees we saw before, where we get the improvement only for large enough $\B_i$'s, the guarantee kicks in from the beginning in here. 
+\end{remark}
+
+\para{Assumptions:} For the sake of simplicity assume $|\hat\R| = m\,$, and $p(j) = 1/m$ for all $j\in\hat\R\,$. In this case, the expected instance is simply an integral matching problem. Further, suppose that there exists a perfect matching in the expected instance; i.e. each $j$ is matched to $M(j)$ and each $i\in\L$ is matched $\B_i$ times. This implies $\baropt = \sum_i \B_i = m$ and we need this to make sure that all the budgets get exhausted. \medskip
+
+\para{Pure Random Algorithm $\Pc\,$:} This algorithm,
+\bnum[\indent-]
+\item knows the expected instance and the perfect matching,
+\item is non-adaptive; makes all the decisions ahead of time; makes its choice even if the vertex $i$ has exhausted its budget (corresponding to throwing it away),
+\item always matches $j$ to $M(j)\,$, but gets credit only if it makes at most $\B_i$ matches.
+\enum
+In fact, for all steps, 
+\[
+\P[\text{$i$ is matched in 1 step}] = \frac{\B_i}{m} = \frac{\text{\# of $j$'s matched to $i$}}{\text{total number of $j$'s}}
+\]
+which is a uniform distribution. \medskip
+
+This algorithm is in fact a \emph{Balls and Bins process} and is independent of the graph and
+\bnum[\indent-]
+\item each $i$ corresponds to a bin with capacity $i$, with $\sum_i \B_i=m\,$,
+\item in each round we throw a ball into bin $i$ with probability $\frac{\B_i}{m}\,$,
+\item repeat $m$ times.
+\enum
+Therefore, denoting by $X_i$ the number of balls thrown into bin $i$, we have $\E[X_i] = B_i$ which is not considering the capacities. In fact, we are looking for $\E[\min\{X_i,\B_i\}]$ instead. Considering 
+\[
+\P[X_i = \ell] = {m \choose \ell} \cdot \left( \frac{\B_i}{m}\right)^\ell \cdot \left( 1-\frac{\B_i}{m}\right)^{(m-\ell)}
+\]
+we can calculate the desired expectation from
+\[
+\E[\min\{X_i,\B_i\}] = \sum_{\ell=1}^{\B_i} \ell \cdot \P[X_i = \ell] + \sum_{\ell = \B_i+1}^{m} \B_i \cdot \P[X_i=\ell]\,.
+\]
+Observe that $\E[\min\{X_i,\B_i\}]$ is monotonically decreasing in $m$ considering the fact that $\E[X_i] = \B_i$ is fixed. Thus, we can look at the limit as
+\beqas
+\lim_{m\to\infty} \E[\min\{X_i,\B_i\}] = \B_i - \sqrt{\frac{\B_i}{2\pi}} = \B_i (1-\frac{1}{\sqrt{2\pi\B_i}}) \geq \B_i  (1-\frac{1}{\sqrt{2\pi K}}) 
+\eeqas
+which implies
+\[
+\E[\Pc] = \sum_i \B_i (1-\frac{1}{\sqrt{2\pi K}})  = \baropt  (1-\frac{1}{\sqrt{2\pi K}}) \geq \baropt (1-\epsilon)
+\]
+for $\epsilon \geq 1/\sqrt{2\pi K}$ that is equivalent to
+\beqa
+K \geq \frac{1}{\sqrt{2\pi \epsilon^2}}\,.
+\eeqa
+
+\begin{remark}
+Compare this result to what we had before as
+\[
+\frac{\B_i}{b_i^{\text{max}}} \geq \frac{o(n \log(mn))}{\epsilon^2}\,.
+\]
+\end{remark}
+
+However, we started out with \emph{unknown} distribution. As we will see in the sequel, we can get similar guarantees by designing an algorithm that does not know about the distribution. 
+
+
+\subsection{Main Algorithm}
+We will define the algorithm inductively. Suppose we could magically start using the \emph{Pure Random algorithm} ($\Pc$) after the $t$th step and denote such an algorithm by \emph{hybrid algorithm}; i.e.
+\[
+\H^t = \A_1, \A_2, \ldots, \A_{t-1},\, ?\, , \Pc_{t+1}, \Pc_{t+2}, \ldots \Pc_m \,.
+\]
+
+Consider the following procedure: given $j$ in the $t$th step, for any choice of $i$ that is an unmatched neighbor of $j$, evaluate the expected number of matches in the remaining time for $\H^t\,$. Match $j$ to $i$ that maximizes this; i.e. match $j$ to
+%
+%Here is a proposal on what to do at the $t$th step: at step $t$, there are many choices. For each step, we estimate the expected number of matches in steps $t+1$, $t+2$, through $m$, which depend on
+%\bnum
+%\item remaining capacity of bin $i$,
+%\item number of the steps remaining,
+%\item and probabilities in each step.
+%\enum
+%Even though we cannot execute the above proposed procedure, we can estimate the value. 
+%
+%
+%In step $t$, match $j$ to the choice that maximizes the expected number of remaining matches. In other words, we will match $j$ to 
+\[
+\arg\max_{i:\, i\sim j} \left\{  \E[\H^t] \mid \A_t = i , \A_1,\A_2,\ldots, \A_{t-1} \right\}
+\]
+where $\A_t=i$ is equivalent to matching $j$ to $i$ at step $t\,$. %In this expression, $\E[\H^t]$ is the expectation of not only the current step but also the remaining steps as well. 
+This defines $\A_t$ and hence the algorithm. Considering,
+\beqas
+\H^t &= \A_1, \A_2, \ldots, \A_{t-1}, \A_t , \Pc_{t+1}, \Pc_{t+2}, \ldots , \Pc_m\\
+\H^{t-1} &= \A_1, \A_2, \ldots, \A_{t-1}, \Pc_t , \Pc_{t+1}, \Pc_{t+2}, \ldots , \Pc_m \,.
+\eeqas
+we have $\E\left[\H^t\right]  \geq \E\left[\H^{t-1}\right]$ from the definition where $\A_t$ is always trying to do better than pure random algorithm. 
+%By definition, $\A_t$ is doing better than Pure Random action $\Pc_t$ which implies
+%\[
+%\E\left[\H^t \mid \A_1, \ldots, \A_{t-1}\right]  \geq \E\left[\H^{t-1} \mid \A_1, \ldots, \A_{t-1}\right]
+%\]
+%and is basically equivalent to 
+%\[
+%\E\left[\H^t\right]  \geq \E\left[\H^{t-1}\right]\,.
+%\]
+Listing the values from every step yields
+\beqa
+\E[\alg] = \E\left[\H^m\right]  \geq \E\left[\H^{m-1}\right] \geq \ldots  \geq \E\left[\H^{0}\right] = \E[\Pc].
+\eeqa
+Notice that even though we do not know the distribution, the \emph{adaptiveness} of our algorithm leads to getting $\E[\alg]$ in the end. \medskip
+
+However, the remaining question is how we can perform the aforementioned magical step. In fact, we can estimate the expected number of matches by its equivalence to a balls and bins procedure. To perform this calculation, we need the remaining capacity, the probability of match in one step, and the number of remaining steps. \medskip
+
+
+\para{Suggested Exercise.} Extend the presented algorithm and analysis to Budgeted Allocation Problem with integral parameters. Here is the sketch of analysis: denote by $X_i$ the sum of $b_{ij}$'s where $\E[X_i] = \B_i$ and for each time step we have $\E[X_i^t] = \B_i/m\,$. Then, $\E[\min\{X_i, \B_i\}]$ is the smallest when $b_{ij} \in \{0,b_i^{\text{max}}\}$. The algorithm is as follows: evaluate profit in the current step plus the expected remaining profit (assuming the condition on $b_{ij}$'s). The final guarantee is in the form
+\[
+\alg \geq \opt (1-\frac{1}{\sqrt{2\pi K}})
+\] 
+where $\B_i / b_i^{\text{max}}\geq K\,$. Observe that the analysis works for non-uniform distributions. 
+
+For this, look at the remaining budget plus to what we have in every step because in this case $b_{ij}$'s are not equal to one as above. 
+
+
+\end{document}

@@ -1,0 +1,106 @@
+\documentclass{amsart}
+\usepackage{amssymb,amsmath}
+\usepackage{mathrsfs}
+
+\newcommand{\PP}{\mathbb{P}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\PSD}{\mathcal{S}_+}
+\newcommand{\rank}{\textup{rank}}
+\newcommand{\diag}{\textup{diag}}
+
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{conjecture}[theorem]{Conjecture}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{claim}[theorem]{Claim}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{xca}[theorem]{Exercise}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
+
+\newcommand{\todo}[1]{\vspace{5 mm}\par \noindent \marginpar{\textsc{ToDo}}
+\framebox{\begin{minipage}[c]{0.95 \textwidth} \tt #1
+\end{minipage}}\vspace{5 mm}\par}
+
+
+\title{Jan 11 Notes from CSE 599: Online Algorithms}
+
+\begin{document}
+\maketitle
+
+Previously, we saw that the competitive ratio for algorithms on the fractional online bipartite matching problem is bounded above by $1 - \frac{1}{e}$.  Below we will see an algorithm that achieves this bound.
+
+\section{Water Level Algorithm}
+
+First, we describe the algorithm.  Let $x_{ij}$ denote the value placed on edge $(i,j)$ (the amount of water flowing from $j$ to $i$).  Let $y_i = \sum_{j\sim i} x_{ij}$ be the sum of the values of all the edges incident to $i$ (the level of water in bin $i$).
+
+Now, when a new vertex $j$ arrives, we do the following:  While $\sum_{i\sim j} x_{ij} < 1$ and $\textup{min}_{i' \sim  j} y_{i'} < 1$, increment $x_{ij}$ by $dx$ for each $i$ in $\textup{argmin}_{i' \sim  j} y_{i'}$.
+
+\begin{proposition}
+The algorithm described above has competitive ratio at least $1 - \frac{1}{e}$.
+\end{proposition}
+
+\begin{proof}
+Let $\alpha_i$ denote the total money placed on a left vertex $i$ by the algorithm (ALG) and let $\beta_j$ denote the total money placed on a right vertex $j$ by ALG.  Define the function $g(x) = e^{x-1}$.  Let $y_i^f$ denote the value of $y_i$ at the termination of the algorithm (similarly for $\alpha_i^f$,...).
+
+Fix an edge $(i,j)$.  If the algorithm assigns value $dx$ to the edge $(i,j)$, then we increment $\alpha_i$ by $g(y_i)dx$ and $\beta_j$ by $(1-g(y_i))dx$.
+
+Now if we show that $\alpha_i^f + \beta_i^f \geq 1 - \frac{1}{e}$ for edge $(i,j)$, the proof will be complete.  Note that 
+\[ \alpha_i^f = \int_0^{y_i^f} g(y_i) dy_i = g(y_i^f) - \frac{1}{e} \]
+By the monotonicity of $g$, we have that $g(y_i) \leq g(y_i^f)$ throughout the process.  Hence $\beta_j^f \geq 1 - g(y_i^f)$.  Thus we have that $\alpha_i^f + \beta_i^f \geq 1 - \frac{1}{e}$.
+\end{proof}
+
+\begin{remark}
+The $g$ in the above proof can be derived from the properties we desire it to have.  If we let $G(y) = \int_0^y g(x)dx$ and $\gamma$ be the target competitive ratio, then we have the desired properties $G(1) - G(0) = \gamma$ and $G(y_i^f) - G(0) + 1 - g(y_i^f) = \gamma$.  From these equations, we can get a differential equation (by differentiating the second equation) and boundary conditions.  Solving these, we obtain the function $g$.
+\end{remark}
+
+We can also look at this from the viewpoint of linear programming (LP).  Written as an LP, the fractional bipartite matching problem has the form:
+
+$\textup{max} \sum_{(i,j) \in E} x_{ij}$ such that 
+\begin{itemize}
+\item $\sum_{j \sim i} x_{ij} \leq 1$ for every $i \in L$
+\item $\sum_{i \sim j} x_{ij} \leq 1$ for every $j \in R$
+\item $x_{ij} \geq 0$
+\end{itemize}
+
+This LP has the following dual:
+
+$\textup{min} \sum_i \alpha_i + \sum_j \beta_j$ such that
+\begin{itemize}
+\item $\alpha_i + \beta_j \geq 1$ for all $(i,j) \in E$
+\item $\alpha_i$, $\beta_j \geq 0$
+\end{itemize}
+
+Above, we showed that $\alpha_i + \beta_j \geq \gamma = 1 - \frac{1}{e}$.  Thus, if we scale the constraints in the dual problem by $\gamma$ (i.e. we require $\geq \gamma$ instead of $\geq 1$ ), then we obtain a feasible dual problem.  This scaling corresponds to multiplying the objective function in the primal problem by $\gamma$.  Thus, using weak duality we have the following inequality: 
+\[ \gamma \textup{PRIMAL} \leq \gamma \textup{OPT} \leq \textup{FEASIBLE DUAL} \]
+Now by noting that our algorithm determines an instance of FEASIBLE DUAL and by dividing by OPT, we see a proof that the competitive ratio is bounded below by $\gamma$.
+
+\section{Budget Allocation (Adwords) Problem}
+
+For this problem, we introduce the following notation.  Let $L$ (the left vertices) be a set of advertisers.  Each $i \in L$ has a budget $B_i$.  Let $R$ (the right vertices) be a set of ``queries.''  For every $j \in R$ and $i \in L$, we have a bid $b_{ij}$.  Now each query can be matched to at most one advertiser.  Then the quantity that we want to maximize is:
+\[ \sum_i \textup{min}\left\{ \sum_{j: j\rightarrow i} b_{ij}, \, B_i \right\} \]
+For the adwords case of this problem, we make the additional assumption that $\frac{b_{ij}}{B_i} \ll 1$.
+
+The fractional version of this problem is easier to work with and, under the adwords assumption, produces similar results.  In the fractional setting we define $x_{ij}$ to be the weight that we place on an edge $b_{ij}$.  Then the problem becomes the following LP:
+
+$\textup{max} \sum_{(i,j)} b_{ij}x_{ij}$ such that 
+\begin{itemize}
+\item $\sum_{i} x_{ij} \leq 1$ for every $j \in R$
+\item $\sum_{j} b_{ij}x_{ij} \leq B_i$ for every $i \in L$
+\item $x_{ij} \geq 0$
+\end{itemize}
+
+This problem has the dual:
+
+$\textup{min} \sum_i \alpha_i B_i + \sum_j \beta_j$ such that
+\begin{itemize}
+\item $\alpha_i b_{ij} + \beta_j \geq b_{ij}$ for all $(i,j)$
+\item $\alpha_i$, $\beta_j \geq 0$
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,248 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Nikhil Devanur</title>
+</head>
+<body leftmargin="10" topmargin="10" vlink="#3366ff" alink="#3366ff" background="files/bg_grid_white.gif" link="#3366ff" marginheight="10" marginwidth="10" text="#000000">
+<style type="text/css">
+<!--
+
+A:link{text-decoration: underline; color: #000000; font-weight: bold;}
+A:visited{text-decoration: underline; color: #000000; font-weight: bold;}
+A:active{text-decoration: underline; color: #ff0000; font-weight: bold;}
+A:hover{text-decoration: underline; color: #ff0000; font-weight: bold;}
+
+
+
+.NVerdana {font-family: verdana; font-size: 10pt}
+.NArial   {font-family: arial; font-size: 10pt}
+.NArialL  {font-family: arial; font-size: 12pt}
+.NArialS  {font-family: arial; font-size: 8pt}
+.NArialW  {COLOR: #FFFFFF; font-family: arial; font-size: 10pt}
+
+-->
+</style>
+
+<div align="left">
+<table width="1000" border="0" cellpadding="1" cellspacing="0">
+
+<tbody><tr><td>
+<table width="70" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td width="100%">
+</td> </tr></tbody></table> </td>
+<td>
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+</td></tr><tr> <td>
+This is my old webpage, which is pretty much out of date. Since
+graduating from GA Tech, I spent a year at
+<a href="http://www.tti-c.org/"> TTI Chicago </a> and have now moved to
+<a href="http://research.microsoft.com/theory/"> the Theory group at
+MSR Redmond </a>. A new webpage will be up soon. <s> At least as soon as I
+finish writing up my STOC papers.</s>
+As soon as I find the inspiration.
+
+Meanwhile, you can reach me at
+<font face="Lucida Console">
+     ndevanur[AT]gmail[DOT]com. </font>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+
+<tbody><tr><td>
+<font face="Arial" size="+2"> Nikhil R Devanur </font>
+</td><td>
+<font face="Trebuchet MS" size="3">
+</font><div align="right">
+<font face="Trebuchet MS" size="3">[ <a href="http://www.cc.gatech.edu/%7Enikhil/cv.pdf"> CV </a>| <a href="#pub">Publications</a>  ]
+</font>
+</div></td></tr></tbody></table>
+
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table>
+<tbody><tr> <td width="40%" align="left"> <img src="files/profile.jpeg">
+</td><td> <font face="Trebuchet MS" size="3">
+
+
+
+I am a PhD student in the <a href="http://www.math.gatech.edu/aco">ACO</a> program at
+<a href="http://www.gatech.edu/"> GA-Tech </a>.
+I am part of the <a href="http://www.cc.gatech.edu/computing/Theory/theory.html">theory of computing group</a>
+at the <a href="http://www.cc.gatech.edu/"> College of Computing </a>.
+My advisor is <a href="http://www.cc.gatech.edu/%7Evazirani/"> Vijay Vazirani </a>.
+
+<!--I am visiting UCBerkeley this semester, and will be here till the end of November. -->
+
+Before this, I did my B.Tech from the <a href="http://www.cse.iitb.ac.in/"> CSE Department </a>
+at <a href="http://www.iitb.ac.in/"> IIT Bombay</a>.<br>
+
+
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+ <font face="Trebuchet MS" size="3">
+Part of my research focuses around various computational issues in economics and game theory,
+especially computing market equilibrum. Part of it focuses on the design and
+analysis of efficient  algorithms for combinatorial optimization problems.
+
+  <table height="10"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial">Contact Information </font></td>
+</tr></tbody></table>
+
+<table width="100%" border="0" cellspacing="0">
+<tbody><tr>
+
+<td colspan="2" valign="top">
+<a href="http://www.cc.gatech.edu/"> College of Computing,</a>
+<br><a href="http://www.gatech.edu/">Georgia Institute of Technology,</a>
+<br>801, Atlantic Dr, Atlanta 30332.</td>
+
+<td align="right">Office : CCB 202
+<br>Ph:(work) 404.385.2643
+<br>Ph:(cell) 404.579.2519</td>
+</tr>
+</tbody></table>
+<table>
+<tbody><tr>
+     <td align="left">
+          Email:
+<font face="Lucida Console">
+     nikhil[AT]cc[DOT]gatech[DOT]edu </font>
+<!--            <img src="emailid.gif"  height="30"> -->
+     </td>
+</tr>
+</tbody></table>
+
+</font></font></td></tr></tbody></table>
+
+
+ <div align="left">
+<!--  Contact:  nikhil[AT]cc[DOT]gatech[DOT]edu, 404-385-2643(W), 404-579-2519(C)  -->
+
+
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pub"> Selected  Publications </a> </font>
+ </td><td align="right">
+<font face="Trebuchet MS" size="3">
+[ <a href="http://www.cc.gatech.edu/%7Enikhil/pubsa.html">All Publications</a>  ]
+</font></td></tr></tbody></table>
+
+<ul>
+<font face="Trebuchet MS" size="3">
+
+<li>
+<!--a href="pubs/egmarkets.ps"-->
+<b>
+New Geometric Relaxations for the Steiner Tree Problem
+     and their Algorithmic Consequences
+</b>
+<!--/a-->
+<br>
+with Deeparnab Chakrabarty, and Vijay Vazirani.
+<i> Working paper</i>
+
+
+</li><li> <a href="http://www.cc.gatech.edu/%7Enikhil/pubs/AD/market-full.pdf"><b>
+Market Equilibrium via a Primal-Dual-Type Algorithm
+</b></a><br>
+with Christos H. Papadimitriou, Amin Saberi and Vijay V.Vazirani.
+<b> Full version </b>. Prelim version appeared in <i>
+IEEE Annual Symposium on Foundations of Computer Science,  FOCS, 2002.
+</i>
+
+
+
+</li><li> <a href="http://www.cc.gatech.edu/%7Enikhil/pubs/usc-mla.pdf">
+<b>
+Integrality Gaps for Sparsest Cut and Minimum Linear Arrangement Problems
+</b></a><br>
+with  Subhash A. Khot,  Rishi Saket and Nisheeth K. Vishnoi.
+ In Proc.  <i>
+The ACM Symposium on Theory of Computing,
+STOC 2006.
+</i>
+
+</li><li> <a href="http://www.cc.gatech.edu/%7Enikhil/pubs/sconstraint.pdf">
+<b>
+The Spending Constraint Model for Market
+Equilibrium: Algorithmic, Existence and Uniqueness results
+</b></a><br>
+ with
+Vijay V. Vazirani.
+In Proc. <i>
+The ACM Symposium on Theory of Computing,
+STOC 2004.
+</i>
+
+
+</li></font></ul>
+
+
+
+<font face="Trebuchet MS" size="3"></font>
+
+
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pub"> Invited Talks </a> </font>
+</td></tr></tbody></table>
+
+<ul>
+<font face="Trebuchet MS" size="3">
+
+<li>
+<b>
+New Geometric Relaxations for the Steiner Tree Problem
+     and their Algorithmic Consequences
+</b>
+<!--/a-->
+<br> in the
+<i> Stanford Algorithms Seminar</i>,
+November 2006.
+
+</li><li>
+<b>
+Market Equilibrium: Models and Algorithms
+</b><br>
+In the <i>
+Cornell Theory Seminar,
+</i>
+March 2006
+
+
+</li><li> <b>
+Price of Anarchy, Locality Gap, and a Network
+Service Provider Game
+</b>
+<br>
+ In   <i>
+INFORMS,
+</i>
+2004.
+
+</li><li>
+<b>
+Market Equilibrium: Algorithms for the Linear Case</b>
+<br>
+In <i>
+Dagstuhl Seminar on
+Algorithmic Game Theory and the Internet</i>,
+July  2003.
+
+</li></font></ul>
+
+
+
+<font face="Trebuchet MS" size="3"></font>
+</div></td>
+</tr></tbody></table>
+
+
+</div></body></html> 

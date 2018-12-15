@@ -1,0 +1,53 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Nikhil Devanur</title>
+</head>
+<body leftmargin="10" topmargin="10" vlink="#3366ff" alink="#3366ff" background="files/bg_grid_white.gif" link="#3366ff" marginheight="10" marginwidth="10" text="#000000">
+<style type="text/css">
+<!--
+
+A:link{text-decoration: underline; color: #000000; font-weight: bold;}
+A:visited{text-decoration: underline; color: #000000; font-weight: bold;}
+A:active{text-decoration: underline; color: #ff0000; font-weight: bold;}
+A:hover{text-decoration: underline; color: #ff0000; font-weight: bold;}
+
+
+
+.NVerdana {font-family: verdana; font-size: 10pt}
+.NArial   {font-family: arial; font-size: 10pt}
+.NArialL  {font-family: arial; font-size: 12pt}
+.NArialS  {font-family: arial; font-size: 8pt}
+.NArialW  {COLOR: #FFFFFF; font-family: arial; font-size: 10pt}
+
+-->
+
+</style>
+
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+
+
+
+I am a post doctoral researcher in the <a href="http://research.microsoft.com/en-us/groups/theory/" >theory group</a>
+  in <a href="http://research.microsoft.com/" >Microsoft Research</a>, Redmond.
+  Prior to this I was a Research Assistant Professor at the <a href="http://www.tti-c.org/" >Toyota Technological Institute
+  at Chicago (TTI-C)</a>. Even earlier, I got my PhD from the <a href="http://www.math.gatech.edu/aco">ACO</a> program at
+<a href="http://www.gatech.edu/"> GA-Tech</a>.
+I was part of the <a href="http://www.cc.gatech.edu/computing/Theory/theory.html">theory of computing group</a>
+at the <a href="http://www.cc.gatech.edu/"> College of Computing</a>.
+My advisor was <a href="http://www.cc.gatech.edu/%7Evazirani/"> Vijay Vazirani</a>.
+
+
+<a href="#" onclick="toggle_visibility('foo');">Click here to toggle visibility of element #foo</a>
+<div id="foo">This is foo</div>
+
+</body></html> 

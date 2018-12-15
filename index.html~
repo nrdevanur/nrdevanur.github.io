@@ -1,0 +1,442 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Nikhil Devanur</title>
+</head>
+<body leftmargin="10" topmargin="10" vlink="#3366ff" alink="#3366ff" background="files/bg_grid_white.gif" link="#3366ff" marginheight="10" marginwidth="10" text="#000000">
+<style type="text/css">
+<!--
+
+A:link{text-decoration: underline; color: #000000; font-weight: bold;}
+A:visited{text-decoration: underline; color: #000000; font-weight: bold;}
+A:active{text-decoration: underline; color: #ff0000; font-weight: bold;}
+A:hover{text-decoration: underline; color: #ff0000; font-weight: bold;}
+
+
+
+.NVerdana {font-family: verdana; font-size: 10pt}
+.NArial   {font-family: arial; font-size: 10pt}
+.NArialL  {font-family: arial; font-size: 12pt}
+.NArialS  {font-family: arial; font-size: 8pt}
+.NArialW  {COLOR: #FFFFFF; font-family: arial; font-size: 10pt}
+
+-->
+</style>
+
+<div align="left">
+<table width="1000" border="0" cellpadding="1" cellspacing="0">
+
+<tbody><tr><td>
+<table width="70" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td width="100%">
+</td> </tr></tbody></table> </td>
+<td>
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+</td></tr><tr> <td>
+<!--This is my old webpage, which is pretty much out of date. Since
+graduating from GA Tech, I spent a year at
+<a href="http://www.tti-c.org/"> TTI Chicago </a> and have now moved to
+<a href="http://research.microsoft.com/theory/"> the Theory group at
+MSR Redmond </a>. A new webpage will be up soon. <s> At least as soon as I
+finish writing up my STOC papers.</s>
+As soon as I find the inspiration.
+
+Meanwhile, you can reach me at
+<font face="Lucida Console">
+     ndevanur[AT]gmail[DOT]com. </font>
+-->
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+
+<tbody><tr><td>
+<font face="Arial" size="+2"> Nikhil R Devanur </font>
+</td>
+<!--td>
+<font face="Trebuchet MS" size="3">
+</font><div align="right">
+<font face="Trebuchet MS" size="3">[ <a href="http://www.cc.gatech.edu/%7Enikhil/cv.pdf"> CV </a>| <a href="#pub">Publications</a>  ]
+</font>
+</div></td>
+-->
+</tr></tbody></table>
+
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table>
+<tbody><tr> <td width="40%" align="center"> <img src="..\files\profile.jpg">
+</td><td> <font face="Trebuchet MS" size="3">
+
+I am a post doctoral researcher in the <a href="http://research.microsoft.com/en-us/groups/theory/" >theory group</a>
+  in <a href="http://research.microsoft.com/" >Microsoft Research</a>, Redmond.
+  Prior to this I was a Research Assistant Professor at the <a href="http://www.tti-c.org/" >Toyota Technological Institute
+  at Chicago (TTI-C)</a>. Even earlier, I got my PhD from the <a href="http://www.math.gatech.edu/aco">ACO</a> program at
+<a href="http://www.gatech.edu/"> GA-Tech</a>.
+I was part of the <a href="http://www.cc.gatech.edu/computing/Theory/theory.html">theory of computing group</a>
+at the <a href="http://www.cc.gatech.edu/"> College of Computing</a>.
+My advisor was <a href="http://www.cc.gatech.edu/%7Evazirani/"> Vijay Vazirani</a>.
+
+<!--I am visiting UCBerkeley this semester, and will be here till the end of November. -->
+
+<!-- Before this, I did my B.Tech from the <a href="http://www.cse.iitb.ac.in/"> CSE Department </a> -->
+<!-- at <a href="http://www.iitb.ac.in/"> IIT Bombay</a>.<br> -->
+
+
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+ <font face="Trebuchet MS" size="3">
+I am interested in what I call  <IT> Automated Economics, <IT> which studies the question of how
+technology can be used to improve the efficiency of economic systems.
+My other interest is in <it> Algorithms<it>: I am interested in designing algorithms that are faster, simpler,
+work online or in a distributed fashion, for some of the basic combinatorial optimization problems.
+	  
+<!-- 	  Part of my research focuses around various computational issues in economics and game theory, -->
+<!-- especially computing market equilibrum. Part of it focuses on the design and -->
+<!-- analysis of efficient  algorithms for combinatorial optimization problems. -->
+ <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+ <font face="Trebuchet MS" size="3">
+I am giving a <a href="http://www.dis.uniroma1.it/~wine09/index.php?option=com_content&view=article&id=62&Itemid=75" >tutorial  on Market Equilibrium</a> (jointly with Kamal Jain) at
+ the Workshop on Internet and Network Economics, <a href="http://www.dis.uniroma1.it/~wine09/" >WINE 2009</a>.
+  <table height="10"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial">Contact Information </font></td>
+</tr></tbody></table>
+
+<table width="100%" border="0" cellspacing="0">
+<tbody><tr>
+
+<td colspan="2" valign="top">
+<a href="http://www.cc.gatech.edu/"> One Microsoft way</a>
+<br><a href="http://www.gatech.edu/">Redmond, WA 98052</a>
+
+<td align="right">Ph:(work) 425.538.7509
+<br>Ph:(cell) 312.613.2773</td>
+</tr>
+</tbody></table>
+<table>
+<tbody><tr>
+     <td align="left">
+          Email:
+<font face="Lucida Console">
+     ndevanur[AT]gmail[DOT]com </font>
+<!--            <img src="emailid.gif"  height="30"> -->
+     </td>
+</tr>
+</tbody></table>
+
+</font></font></td></tr></tbody></table>
+
+
+ <div align="left">
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pubselect"> Selected  Publications </a> </font>
+ </td><td align="right">
+<font face="Trebuchet MS" size="3">
+Arrange by [ <a href="index-area.htm/#pubarea">Area</a> |  <a href="index-area.html/#pubdate">Date</a> ]
+</font></td></tr></tbody></table>
+
+<ul>
+<font face="Trebuchet MS" size="3">
+
+<!--
+<li> <b>
+
+  </b>[<a href="pubs/.pdf">pdf</a>]<br>
+with .
+In Proc. <i>
+
+  </i>
+</li>
+-->
+
+<li> <b>
+Monotonicity in Bargaining Networks
+  </b>[<a href="pubs/monotonicity.pdf">pdf</a>]<br>
+with  Yossi Azar, Kamal Jain and Yuval Rabani.
+To appear in Proc. <i>
+SODA 2010
+  </i>
+</li>
+<li> <b>
+Convergence of Local Dynamics to Balanced Outcomes in Exchange Networks
+  </b>[<a href="pubs/edgebalancing.pdf">pdf</a>]<br>
+with Yossi Azar, Benjamin Birnbaum, L. Elisa Celis  and Yuval Peres.
+In Proc. <i>
+FOCS 2009
+  </i>
+</li>
+
+<li> <b>
+The Price of Truthfulness for Pay-Per-Click Auctions
+  </b>[<a href="pubs/ppc.pdf">pdf</a>]<br>
+with Sham Kakade.
+In Proc. <i>
+ACM EC 2009.
+  </i>
+</li>
+<li> <b>
+The Adwords Problem: Online Keyword Matching
+with Budgeted Bidders under Random Permutations
+  </b>[<a href="pubs/Adwords.pdf">pdf</a>]<br>
+with Tom Hayes.
+In Proc. <i>
+ACM EC 2009.
+  </i>
+</li>
+<li> <b>
+Limited and Online Supply and the Bayesian foundations of prior-free mechanism design
+  </b>[<a href="pubs/k-item.pdf">pdf</a>]<br>
+with Jason Hartline.
+In Proc. <i>
+ACM EC 2009.
+  </i>
+</li>
+<li> <b>
+Market Equilibria in Polynomial time for
+fixed number of goods or agents
+  </b>[<a href="pubs/PLC.pdf">pdf</a>]<br>
+with Ravi Kannan.
+In Proc. <i>
+FOCS 2008.
+  </i>
+</li>
+
+<li>
+<b>
+New Geometry-Inspired Relaxations and Algorithms for the Metric Steiner Tree Problem.
+</b>
+[<a href="pubs/steiner.pdf">pdf</a>]<br>
+with Deeparnab Chakrabarty, and Vijay Vazirani.
+To appear in <i> Math Programming (Series A)</i> Volume 122, Number 2 (April 2010).
+(Preliminary  version in <I> IPCO 2008. </i>)
+</li>
+
+
+
+</li><li> 
+<b>
+Integrality Gaps for Sparsest Cut and Minimum Linear Arrangement Problems
+</b>[<a href="pubs/usc-mla.pdf">pdf</a>]<br>
+with  Subhash A. Khot,  Rishi Saket and Nisheeth K. Vishnoi.
+ In Proc.  <i>
+STOC 2006.
+</i>
+
+</li><li> 
+<b>
+The Spending Constraint Model for Market
+Equilibrium: Algorithmic, Existence and Uniqueness results
+</b>[<a href="pubs/sconstraint.pdf">pdf</a>]<br>
+ with
+Vijay V. Vazirani.
+In Proc. <i>
+STOC 2004.
+</i>
+</li>
+
+<li> <b>
+Strategyproof cost-sharing Mechanisms
+for Set Cover and Facility Location Games
+  </b>[<a href="pubs/costsharing.pdf">pdf</a>]<br>
+with Milena Mihail and Vijay Vazirani.
+<i> Decision Support Systems</i> 39 (March 2005), pp 11--22.
+Prelim. version in Proc. <i>
+ACM EC 2003
+  </i>
+</li>
+
+
+<li><b>
+Market Equilibrium via a Primal-Dual-Type Algorithm
+</b> [<a href="pubs/DPSV-JACM.pdf">pdf</a>]<br>
+with Christos H. Papadimitriou, Amin Saberi and Vijay V.Vazirani.
+ In The <I>Journal of the ACM</i>, vol. 55, no. 5 (October 2008),   pp 1--18.
+Prelim version appeared in <i>FOCS 2002.</i>
+
+
+
+</font></ul>
+
+
+ <div align="left">
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pub"> Other  Publications </a> </font>
+ </td>
+</tr></tbody></table>
+
+<ul>
+<font face="Trebuchet MS" size="3">
+
+<!--
+  <li> <b>
+
+  </b>[<a href="pubs/.pdf">pdf</a>]<br>
+with .
+In Proc. <i>
+
+  </i>
+</li>
+-->
+<li> <b>
+ An Online Multi-unit Auction with Improved Competitive Ratio
+  </b>[<a href="pubs/multiunitauction.pdf">pdf</a>]<br>
+with Sourav Chakraborty.
+In Proc. <i>
+WINE 2010.
+  </i>
+</li>
+
+<li> <b>
+A Computational Theory of Awareness and Decision Making
+  </b>[<a href="pubs/awareness.pdf">pdf</a>]<br>
+with Lance Fortnow.
+In Proc. <i>
+ Theoretical Aspects of Rationality and Knowledge, TARK 2009 
+  </i>
+</li>
+<li> <b>
+On the Equivalence of Competitive and Submodular markets
+  </b>[<a href="pubs/competitive.pdf">pdf</a>]<br>
+with Deeparnab Chakrabarty.
+In <IT> Operations Research Letters,</it> vol. 37, no. 3, pp. 155 - 158, 2009.
+Prelim. version in Proc. <i>
+WINE 2007
+  </i>
+</li>
+<li>  <b>
+On Computing the Distinguishing Numbers of Planar Graphs and Beyond: a Counting Approach
+  </b>[<a href="pubs/.pdf">pdf</a>]<br>
+with V. Arvind and Christine Cheng.
+In <i>
+SIAM Journal on Discrete Mathematics,  </i> vol. 22, no. 4 (October 2008), pp. 1297-1324.
+</li>
+<li><b>
+Computing Market Equilibrium: Beyond Weak Gross Substitutes
+  </b>[<a href="pubs/ApproxWGS.pdf">pdf</a>]<br>
+with Chinmay Karande.
+In Proc. <i>
+WINE 2007
+  </i>
+</li>
+<li> <b>
+New results on Rationality and Strongly Poylnomial Solvability in Eisenberg-Gale markets
+  </b>[<a href="pubs/EG-rat.pdf">pdf</a>]<br>
+with Deeparnab Chakrabarty and Vijay Vazirani.
+In Proc. <i>
+WINE 2006
+  </i>
+</li>
+<li> <b>
+Price of Anarchy, Locality Gap, and
+a Network Service Provider Game
+  </b>[<a href="pubs/POA.pdf">pdf</a>]<br>
+with Naveen Garg, Rohit Khandekar,
+ Vinayaka Pandit, Amin Saberi, and Vijay V. Vazirani.
+In Proc. <i>
+WINE 2005
+  </i>
+</li>
+<li> <b>
+On the complexity of Hilbert's 17th
+problem 
+  </b>[<a href="pubs/.pdf">pdf</a>]<br>
+with Richard J. Lipton and Nisheeth Vishnoi.
+In Proc. <i>
+FSTTCS 2004.
+  </i>
+</li>
+<li> <b>
+An Improved Approximation Scheme for
+Computing Arrow-Debreu Prices for the Linear Case
+  </b>[<a href="pubs/.pdf">pdf</a>]<br>
+with Vijay Vazirani.
+In Proc. <i>
+FSTTCS 2003.
+  </i>
+</li>
+<li> <b>
+Who's the Weakest Link?
+  </b>[<a href="pubs/.pdf">pdf</a>]<br>
+with Richard J. Lipton, and Nisheeth Vishnoi.
+In Proc. of <i> 2nd
+International Symposium on Stochastic Algorithms: Foundations and
+Applications,
+SAGA 2003.
+  </i>
+</li>
+
+
+
+</font></ul>
+
+<!-- begin comment
+<font face="Trebuchet MS" size="3"></font>
+
+
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pub"> Invited Talks </a> </font>
+</td></tr></tbody></table>
+
+<ul>
+<font face="Trebuchet MS" size="3">
+
+<li>
+<b>
+New Geometric Relaxations for the Steiner Tree Problem
+     and their Algorithmic Consequences
+</b>
+<br> in the
+<i> Stanford Algorithms Seminar</i>,
+November 2006.
+
+</li><li>
+<b>
+Market Equilibrium: Models and Algorithms
+</b><br>
+In the <i>
+Cornell Theory Seminar,
+</i>
+March 2006
+
+
+</li><li> <b>
+Price of Anarchy, Locality Gap, and a Network
+Service Provider Game
+</b>
+<br>
+ In   <i>
+INFORMS,
+</i>
+2004.
+
+</li><li>
+<b>
+Market Equilibrium: Algorithms for the Linear Case</b>
+<br>
+In <i>
+Dagstuhl Seminar on
+Algorithmic Game Theory and the Internet</i>,
+July  2003.
+
+</li></font></ul>
+
+
+
+<font face="Trebuchet MS" size="3"></font>
+</div></td>
+</tr></tbody></table>
+
+end all the way here -->
+
+</div></body></html> 

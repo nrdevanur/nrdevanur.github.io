@@ -1,0 +1,397 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=ISO-8859-1">
+<title>Nikhil Devanur</title>
+</head>
+<body leftmargin="10" topmargin="10" vlink="#3366ff" alink="#3366ff" background="../files/bg_grid_white.gif" link="#3366ff" marginheight="10" marginwidth="10" text="#000000">
+<style type="text/css">
+<!--
+
+A:link{text-decoration: underline; color: #000000; font-weight: bold;}
+A:visited{text-decoration: underline; color: #000000; font-weight: bold;}
+A:active{text-decoration: underline; color: #ff0000; font-weight: bold;}
+A:hover{text-decoration: underline; color: #ff0000; font-weight: bold;}
+
+
+
+.NVerdana {font-family: verdana; font-size: 10pt}
+.NArial   {font-family: arial; font-size: 10pt}
+.NArialL  {font-family: arial; font-size: 12pt}
+.NArialS  {font-family: arial; font-size: 8pt}
+.NArialW  {COLOR: #FFFFFF; font-family: arial; font-size: 10pt}
+
+-->
+</style>
+<script type="text/javascript">
+<!--
+    function toggle_visibility(id) {
+       var e = document.getElementById(id);
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+//-->
+</script>
+<div align="left">
+<table width="1000" border="0" cellpadding="1" cellspacing="0">
+
+<tbody><tr><td>
+<table width="70" border="0" cellpadding="0" cellspacing="0">
+<tbody><tr><td width="100%">
+</td> </tr></tbody></table> </td>
+<td>
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+</td></tr><tr> <td>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+
+<tbody><tr><td>
+<font face="Arial" size="+2"> CSE 599I Online Algorithms </font>
+</td>
+</tr>
+</tbody></table>
+
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table>
+<tbody><tr> <td> <font face="Trebuchet MS" size="3">
+Winter Quarter 2013. <br> 
+Instructor: <a href = ../index.html> Nikhil R. Devanur</a>. <br> 
+Wednesdays and Fridays 10:30-11:50 am.<br>
+Room # CSE 203. <br> 
+
+ <div align="left">
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pubselect"> Prerequisites </a> </font>
+ </td>
+</font></td></tr></tbody></table>
+<font face="Trebuchet MS" size="3">
+It will be assumed that the students are familiar with the basics of the design and analysis of algorithms in addition to the following topics.  
+<ul> 
+<li> <b> LP duality.</b> For a quick refresher, see <a href = http://pages.cs.wisc.edu/~shuchi/courses/787-F09/scribe-notes/lec5-2.pdf> Lecture notes by Shuchi Chawla </a> or 
+<a href = http://www.cs.cmu.edu/afs/cs.cmu.edu/academic/class/15859-f11/www/notes/lecture05.pdf> by Anupam Gupta </a>. </li> 
+<li> <b> Chernoff bounds.</b> See once again lecture notes by <a href = http://www.cs.cmu.edu/afs/cs/academic/class/15859-f04/www/scribes/lec9.pdf> Shuchi Chawla</a>, 
+<a href = http://www.cs.princeton.edu/courses/archive/fall09/cos521/Handouts/lectureten.pdf> John Canny </a> or 
+<a href = http://www.cs.princeton.edu/courses/archive/fall09/cos521/Handouts/probabilityandcomputing.pdf> Bob Tarjan</a>. 
+</ul>
+
+Students are expected to scribe one of the lectures. There will be no exams. There will be suggested exercises, not mandatory. 
+ <div align="left">
+          <table height="30"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pubselect"> Course Notes, etc.</a> </font>
+ </td>
+</font></td></tr></tbody></table>
+<font face="Trebuchet MS" size="3">
+<ul>
+<font face="Trebuchet MS" size="3">
+<!--------------------------------------------------------------> 
+<li> 
+<b>[Jan 9]</b> Pictures from the board: <a href = "BoardPics/Jan 9 p1.jpg">1</a> | <a href = "BoardPics/Jan 9 p2.jpg">2</a> | <a href = "BoardPics/Jan 9 p3.jpg">3</a> | <a href = "BoardPics/Jan 9 p4.jpg">4</a> | <a href = "BoardPics/Jan 9 p5.jpg">5</a> | <a href = "BoardPics/Jan 9 p6.jpg">6</a>   
+&nbsp; &nbsp; <a href = "ClassNotes/Jan_9.pdf">Scribe Notes </a> 
+<br>
+</li>
+<li> 
+<b>[Jan 11]</b> Pictures from the board: <a href = "BoardPics/Jan 11 p1.jpg">1</a> | <a href = "BoardPics/Jan 11 p2.jpg">2</a> | <a href = "BoardPics/Jan 11 p3.jpg">3</a> | <a href = "BoardPics/Jan 11 p4.jpg">4</a> | <a href = "BoardPics/Jan 11 p5.jpg">5</a> | <a href = "BoardPics/Jan 11 p6.jpg">6</a> | <a href = "BoardPics/Jan 11 p7.jpg">7</a> | <a href = "BoardPics/Jan 11 p8.jpg">8</a>   
+&nbsp; &nbsp; <a href = "ClassNotes/Jan_11.pdf">Scribe Notes </a> 
+<br>
+</li>
+<li> 
+<b>[Jan 16]</b> Pictures from the board: <a href = "BoardPics/Jan 16 p1.jpg">1</a> | <a href = "BoardPics/Jan 16 p2.jpg">2</a> | <a href = "BoardPics/Jan 16 p3.jpg">3</a> | <a href = "BoardPics/Jan 16 p4.jpg">4</a> 
+&nbsp; &nbsp; <a href = "ClassNotes/Jan_16.pdf">Scribe Notes </a> 
+<br>
+</li>
+<li> 
+<b>[Jan 18]</b> Pictures from the board: <a href = "BoardPics/Jan 18 p1.jpg">1</a> | <a href = "BoardPics/Jan 18 p2.jpg">2</a> | <a href = "BoardPics/Jan 18 p3.jpg">3</a> | <a href = "BoardPics/Jan 18 p4.jpg">4</a> | <a href = "BoardPics/Jan 18 p5.jpg">5</a> | <a href = "BoardPics/Jan 18 p6.jpg">6</a> | <a href = "BoardPics/Jan 18 p7.jpg">7</a>   
+&nbsp; &nbsp; <a href = "ClassNotes/Jan_18.pdf">Scribe Notes </a> 
+<br>
+</li>
+<li> 
+<b>[Jan 23]</b> Pictures from the board: <a href = "BoardPics/Jan 23 p1.jpg">1</a> | <a href = "BoardPics/Jan 23 p2.jpg">2</a> | <a href = "BoardPics/Jan 23 p3.jpg">3</a> | <a href = "BoardPics/Jan 23 p4.jpg">4</a> | <a href = "BoardPics/Jan 23 p5.jpg">5</a> | <a href = "BoardPics/Jan 23 p6.jpg">6</a> | <a href = "BoardPics/Jan 23 p7.jpg">7</a> | <a href = "BoardPics/Jan 23 p8.jpg">8</a>   
+<!-- &nbsp; &nbsp; <a href = "ClassNotes/Jan_23.pdf"> Notes </a>  -->
+<br>
+</li>
+<li> 
+<b>[Jan 25]</b> Pictures from the board: <a href = "BoardPics/Jan 25 p1.jpg">1</a> | <a href = "BoardPics/Jan 25 p2.jpg">2</a> | <a href = "BoardPics/Jan 25 p3.jpg">3</a> | <a href = "BoardPics/Jan 25 p4.jpg">4</a> | <a href = "BoardPics/Jan 25 p5.jpg">5</a> | <a href = "BoardPics/Jan 25 p6.jpg">6</a> | <a href = "BoardPics/Jan 25 p7.jpg">7</a> | <a href = "BoardPics/Jan 25 p8.jpg">8</a>   | <a href = "BoardPics/Jan 25 p9.jpg">9</a>   
+<!-- &nbsp; &nbsp; <a href = "ClassNotes/Jan_25.pdf"> Notes </a>  -->
+<br>
+</li>
+<li> 
+<b>[Jan 30]</b>  <a href = "ClassNotes/HW Jan 30.pdf"> Handwritten Notes </a> 
+&nbsp; &nbsp; <a href = "ClassNotes/Jan_30.pdf"> Scribe Notes </a> 
+</li>
+<li> 
+<b>[Feb 1 and 6]</b>  <a href = "ClassNotes/HW Feb 1.pdf"> Handwritten Notes </a> &nbsp; &nbsp; <a href = "ClassNotes/Feb_1.pdf"> Scribe Notes </a> 
+
+</li>
+<li> 
+<b>[Feb 8]</b>  <a href = "ClassNotes/HW Feb 8.pdf"> Handwritten Notes </a> 
+</li>
+<li> 
+<b>[Feb 13-15]</b>  <a href = "ClassNotes/HW Feb 13-15.pdf"> Handwritten Notes </a> 
+&nbsp; &nbsp; <a href = "ClassNotes/Feb_13.pdf"> Scribe Notes </a> 
+<!-- &nbsp; &nbsp; <a href = "ClassNotes/Feb_13.pdf"> Notes </a>
+ --></li>
+ <li> 
+<b>[Feb 20-22]</b>  <a href = "ClassNotes/HW Feb 20.pdf"> Handwritten Notes </a> 
+&nbsp; &nbsp; <a href = "ClassNotes/Feb_20.pdf"> Scribe Notes </a> 
+</li>
+  <li> 
+<b>[Feb 22]</b>  <a href = "ClassNotes/HW Feb 22.pdf"> Handwritten Notes </a> 
+<!-- &nbsp; &nbsp; <a href = "ClassNotes/Feb_15.pdf"> Scribe Notes </a> 
+ --></li>
+  <li> 
+<b>[Feb 27]</b>  
+<!-- <a href = "ClassNotes/HW Feb 22.pdf"> Handwritten Notes </a> --> 
+ &nbsp; &nbsp; <a href = "ClassNotes/Feb_27.pdf"> Scribe Notes </a> 
+</li>
+</ul>
+ <div align="left">
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pubselect"> Suggested Exercises</a> </font>
+ </td>
+</font></td></tr></tbody></table>
+<font face="Trebuchet MS" size="3">
+<ul>
+<font face="Trebuchet MS" size="3">
+<!--------------------------------------------------------------> 
+<li> 
+<b>[Jan 11]</b> Extend the proof of the fractional bi-partite matching problem to the b-matching problem. Compare with the analysis of 
+<a href = http://citeseerx.ist.psu.edu/viewdoc/download;jsessionid=CF5B9C4E4C42F4106DF967349E42259F?doi=10.1.1.56.8916&rep=rep1&type=pdf> 
+Kalyanasundaram and Pruhs</a>. 
+<br>
+</li>
+<li> 
+<b>[Jan 11, more challenging]</b>  Extend the proof of the fractional bi-partite matching problem to the fractional budgeted allocation problem. 
+Compare with the analysis of 
+<a href = http://www.stanford.edu/~saberi/adwords.pdf> 
+Mehta, Saberi, Vazirani and Vazirani</a>. 
+<br>
+</li>
+<li> 
+<b>[Jan 16]</b> Convert the proof of the fractional budgeted allocation problem to a primal-dual proof. 
+Compare with the analysis of 
+<a href = http://www.stanford.edu/~saberi/adwords.pdf> 
+Mehta, Saberi, Vazirani and Vazirani</a>. 
+<br>
+</li>
+<li> 
+<b>[Jan 16]</b>  Extend the proof of the RANKING algorithm to the vertex weighted version of online bipartite matching. 
+Compare with the analysis of 
+<a href = http://arxiv.org/pdf/1007.1271v1.pdf>Aggarwal, Goel, Karande and Mehta</a>. 
+<br>
+</li>
+<li> 
+<b>[Jan 18]</b> Compare the analysis from class of the bipartite matching with free disposal problem 
+with that of 
+<a  href= http://140.123.102.14:8080/reportSys/file/paper/cktsung/cktsung_31_paper.pdf>Feldman, et. al.</a> 
+<br>
+</li>
+<li> 
+<b>[Jan 18]</b> Compare the analysis from class of the greedy algorithm for the fractional budgeted allocation problem with random arrival order 
+with that of 
+<a href = http://www.cc.gatech.edu/grads/g/gagang/onlineBudgetedMatching.pdf>Goel and Mehta.</a> 
+<br>
+</li>
+<li> 
+<b>[Jan 25]</b>  Extend the analysis of the free disposal problem in class to the case where the constraints on the vertices in L have arbitrary non-negative coefficients.
+<br>
+</li>
+</ul>
+ <div align="left">
+          <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
+
+<table width="100%" bgcolor="#dbeaf5" border="0" cellpadding="5" cellspacing="0">
+<tbody><tr><td align="left">
+<font face="Arial" size="+1"> <a name="pubselect"> Topics</a> </font>
+ </td>
+</font></td></tr></tbody></table>
+<font face="Trebuchet MS" size="3">
+The following is a (tentative) list of topics to be covered in the course. <br> <br> 
+Part 1: Online bipartite matching and its generalizations: 
+<ul>
+<font face="Trebuchet MS" size="3">
+<!--------------------------------------------------------------> 
+<li> 
+Online Bipartite Matching, fractional version. Primal-Dual algorithm.
+<br>
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li>
+Online Bipartite Matching, integral version. Randomized Primal-Dual Analysis of the RANKING Algorithm. 
+[<a href="../pubs/RPDFinal.pdf">Devanur, Jain and Kleinberg, SODA 2013</a>]
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+The <i> Adwords </i> or the (fractional) online budgeted allocation problem,   Primal-Dual algorithm. 
+[<a href = http://www.stanford.edu/~saberi/adwords.pdf> Mehta, Saberi, Vazirani and Vazirani, FOCS 2005/JACM 2007, </a> |  <a href=>Buchbinder, Jain and Naor, ESA 2007</a>]
+</li>
+<!--------------------------------------------------------------> 
+<li> 
+The <i> Adwords </i> problem with random arrival order, greedy algorithm.   
+[<a href = http://www.cc.gatech.edu/grads/g/gagang/onlineBudgetedMatching.pdf>Goel and Mehta, SODA 2008</a> |  <a href="../pubs/RPDFinal.pdf">Devanur, Jain and Kleinberg, SODA 2013</a>]
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+Vertex weighted online bipartite matching.   
+[<a href = http://arxiv.org/pdf/1007.1271v1.pdf>Aggarwal, Goel, Karande and Mehta, SODA 2011</a> |  <a href="../pubs/RPDFinal.pdf">Devanur, Jain and Kleinberg, SODA 2013</a>]
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+Online Ad Assignment with Free Disposal. 
+[<a href= http://140.123.102.14:8080/reportSys/file/paper/cktsung/cktsung_31_paper.pdf>Feldman, Korula, Mirrokni, Muthukrishnan and Pál, WINE 2009</a> |
+<a href = https://sites.google.com/site/adauctions2012/aaw12_submission_6.pdf?attredirects=0> Korula, Mirrokni and Yan, AAW 2012</a>]
+</li>
+<!-------------------------------------------------------------->  
+<!--------------------------------------------------------------> 
+<li>
+Online Matching with Concave Returns. 
+[<a href="../pubs/OMwCR.pdf">Devanur and Jain, STOC 2012</a>]
+</li> 
+<!-------------------------------------------------------------->   
+<!--------------------------------------------------------------> <li>
+Online Bipartite Matching, integral version with random arrival order. 
+[<a href = "http://mahdian.org/onlinematching.pdf">Mahdian and Yan, STOC 2011</a> | <a href = http://www.cc.gatech.edu/~tpushkar/papers/bipartite.pdf>Karande, Mehta and Tripathi, STOC 2011</a>]
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+The <i> Adwords </i> problem with random arrival order, learning based algorithm.   
+[<a href = "../pubs/Adwords.pdf">Devanur and Hayes, EC 2009</a> ]
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+The general assignment problem with random arrival order, learning based algorithm.   
+[<a href =http://arxiv.org/pdf/0911.2974v1.pdf>Agarwal, Wang and Ye</a> | <a href = http://arxiv.org/pdf/1001.5076v2.pdf> Feldman, Henzinger, Korula, Mirrokni and Stein, ESA 2010</a>]
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+The online b-matching problem with i.i.d arrival.   
+[<a href = "http://www-cs-students.stanford.edu/~xuying/papers/match-random.pdf">Motwani,Panigrahi and Xu, APPROX-RANDOM 2006</a> ]
+</li>
+<!--------------------------------------------------------------> <!--------------------------------------------------------------> 
+<li> 
+The <i> Adwords </i> problem with i.i.d arrival, <i> hybrid </i> argument.   
+[<a href = "../pubs/AOASA.pdf">Devanur, Sivan and Azar, EC 2012</a> ]
+</li>
+<!--------------------------------------------------------------> 
+<li> 
+The general assignment problem  problem with i.i.d arrival, <i> hybrid </i> argument.   
+[<a href = "../pubs/GWLfull.pdf">Devanur, Jain, Sivan and Wilkens, EC 2011</a> ]
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+The online submodular welfare problem with i.i.d arrival, <i> hybrid </i> argument. 
+[<a href = http://theory.stanford.edu/~jvondrak/data/online-alloc.pdf>Kapralov, Post and Vondrak, SODA 2013</a>] 
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+The online bipartite matching with i.i.d arrival, known distribution. 
+[<a href = http://arxiv.org/pdf/1007.1673v2>Manshadi, Oveis Gharan and Saberi, SODA 2011</a>] 
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+Open problems: integral budgeted allocation problem, integral free disposal. Impossibility of using the LP relaxation. 
+[<a href = http://theory.stanford.edu/~jvondrak/data/online-alloc.pdf>Kapralov, Post and Vondrak, SODA 2013</a>] 
+</li>
+<!--------------------------------------------------------------> 
+<!-------------------------------------------------------------- 
+<li> <b>
+Online Matching with Concave Returns
+  </b>[<a href="pubs/OMwCR.pdf">pdf</a>| <a   href = "#PR" onclick="toggle_visibility('absRTB');">Show/Hide  Abstract</a>]<br>
+with Kamal Jain. 
+In Proc. <i>
+ STOC 2012</i>
+<div id="absRTB" style="display:none"><font face="Arial" size="3">
+<p>
+We consider a <i> significant </i>generalization of the Adwords problem by  <i> allowing arbitrary concave returns,
+and we characterize the optimal competitive ratio achievable</i>.
+The problem considers a sequence of items arriving online that have to be allocated to agents, with different agents bidding different amounts.
+The objective function is the sum, over each agent i, of a monotonically non-decreasing concave function $M_i : R_+ \rightarrow R_+$ of the total amount allocated to i.
+All variants of online matching problems (including the Adwords problem) studied in the literature consider the special case of budgeted linear functions,
+that is,  functions of the form $M_i( u_i) = \min \{u_i,B_i\}$ for some constant $B_i$.
+The distinguishing feature of this paper is in allowing arbitrary concave returns.
+The main result of this paper is that for each concave function $M$, there exists a constant $F(M) \leq 1$ such that
+<ul>
+<li> there exists an algorithm with competitive ratio of \\$\min_i\{ F(M_i) \}$, independent of the sequence of items.
+<LI> No algorithm has  a competitive ratio larger than $F(M)$ over all instances with $M_i= M$ for all $i$.
+</ul>
+Our algorithm is based on the primal-dual paradigm and makes use of convex programming duality.
+The upper bounds are obtained by formulating the task of finding the right counterexample as an optimization problem.
+This path takes us through the calculus of variations which deals with optimizing over continuous functions.
+The algorithm and the upper bound are related to each other via a set of differential equations, which
+points to a certain kind of duality between them.
+  </p></font>
+</div></li>
+<!--------------------------------------------------------------> 
+
+</ul>
+Part 2: Classics 
+<ul> 
+<!--------------------------------------------------------------> 
+<li> 
+The ski rental problem.   
+</li>
+<!--------------------------------------------------------------> 
+<!--------------------------------------------------------------> 
+<li> 
+Paging, deterministic and randomized algorithms.   
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+Weighted paging, primal-dual algorithm.   
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+Load balancing: power of 2 choices.</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+Learning from Experts: Multiplicative weight update method. Applications. 
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+The Secretary problem. Dealing with incentives. 
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+Online Set Cover.   
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+The k-server problem.   
+</li>
+<!-------------------------------------------------------------->
+<!--------------------------------------------------------------> 
+<li> 
+Energy efficient online scheduling. 
+</li>
+<!-------------------------------------------------------------->
+</ul> 
+</font>
+
+
+
+</div></body></html> 

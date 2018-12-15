@@ -1,0 +1,171 @@
+%% LyX 2.0.0 created this file.  For more info, see http://www.lyx.org/.
+%% Do not edit unless you really know what you are doing.
+\documentclass{article}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\usepackage{geometry}
+\geometry{verbose,tmargin=1in,bmargin=1in,lmargin=1in,rmargin=1in}
+\setlength{\parskip}{\smallskipamount}
+\setlength{\parindent}{0pt}
+\usepackage{amssymb}
+\usepackage{esint}
+
+\makeatletter
+\@ifundefined{date}{}{\date{}}
+\makeatother
+
+\begin{document}
+
+\title{Jan 16 Notes}
+
+
+\date{\vspace{-0.7in}
+}
+
+\maketitle
+
+\section{Continuing with the Budget Allocation Problem}
+
+
+\subsection{Algorithm}
+
+Let $g(x)=e^{x-1}$ and $y_{i}=\sum_{j}\frac{b_{ij}x_{ij}}{B_{i}}$.
+
+When node $j\in R$ {}``arrives'' repetitively match $dx$ of $j$
+to $\mbox{argmax}_{i:i\sim j}\left\{ b_{ij}\left(1-g(y_{i})\right)\right\} $
+until either 
+
+1. $\sum_{i}x_{ij}=1$, i.e., node $j$ is exhausted or
+
+2. $\min_{i:i\sim j}\left\{ y_{i}\right\} =1$, i.e., the budgets
+of nodes connected to $j$ are exhausted.
+
+
+\subsection{Charging Policy}
+
+For each $dx$ of $j$ which is matched to $i$ then increment $\alpha_{i}$
+by $b_{ij}g(y_{i})dx$ and $\beta_{j}$ by $b_{ij}\left(1-g(y_{i})\right)dx$.
+
+
+\subsection{Analysis of Competitive Ratio}
+
+The change in $y_{i}$, when $dx$ arrives along edge $j\rightarrow i$,
+is $dy_{i}=\frac{b_{ij}dx}{B_{i}}$, or equivalently 
+\[
+b_{ij}dx=B_{i}dy_{i}.
+\]
+Consequently, the change in $\alpha_{i}$ is 
+\[
+d\alpha_{i}=b_{ij}g(y_{i})dx=B_{i}g(y_{i})dy_{i}.
+\]
+From the analysis of the the water level algorithm we have that $\int_{0}^{y_{i}^{f}}g(y_{i})dy_{i}=g(y_{i}^{f})-\frac{1}{e}$.
+The final $\alpha_{i}$ value is thus
+\begin{eqnarray*}
+\alpha_{i} & = & \int_{0}^{y_{i}^{f}}B_{i}g(y_{i})dy_{i}=B_{i}\int_{0}^{y_{i}^{f}}g(y_{i})dy_{i}=B_{i}\left(g(y_{i}^{f})-\frac{1}{e}\right).
+\end{eqnarray*}
+
+
+At the end of the algorithm if node $i$ has exhausted its budget,
+i.e., $y_{i}^{f}=1$ then $\alpha_{i}=B_{i}\left(g(1)-\frac{1}{e}\right)=B_{i}\left(1-\frac{1}{e}\right)$.
+The alternative is that there is still budget remaining at node $i$
+and therefore $y_{i}^{f}<1$. In this case, an adjacent node $j$
+will have $\beta_{j}\geq b_{ij}\left(1-g(y_{i}^{f})\right)$, as $j$
+will always assign to a node $i'$, say, with $y_{i'}\leq y_{i}^{f}$.
+
+Consider the optimal set of edge assignment $x_{ij}^{*}$. For those
+edges adjacent to $i$, the value gathered from these edges is $\sum_{j}b_{ij}x_{ij}^{*}$,
+which is at most $B_{i}$, due to the budget constraint on $i$. The
+value gathered from the proposed algorithm is $\alpha_{i}$ from node
+$i$ and a selected contribution of $\sum_{j}\beta_{j}x_{ij}^{*}$
+from the nodes adjacent to $i$. From the bounds on $\alpha_{i}$
+and $\beta_{j}$ above,
+\begin{eqnarray*}
+\alpha_{i}+\sum_{j}\beta_{j}x_{ij}^{*} & \geq & B_{i}\left(g(y_{i}^{f})-\frac{1}{e}\right)+\sum_{j}b_{ij}x_{ij}^{*}\left(1-g(y_{i}^{f})\right)\\
+ & \geq & \sum_{j}b_{ij}x_{ij}^{*}\left(g(y_{i}^{f})-\frac{1}{e}\right)+\sum_{j}b_{ij}x_{ij}^{*}\left(1-g(y_{i}^{f})\right)\,(\mbox{from the constraints }\sum_{j}b_{ij}x_{ij}^{*}\leq B_{i})\\
+ & \geq & \sum_{j}b_{ij}x_{ij}^{*}\left(g(y_{i}^{f})-\frac{1}{e}+1-g(y_{i}^{f})\right)\\
+ & \geq & \sum_{j}b_{ij}x_{ij}^{*}\left(1-\frac{1}{e}\right).
+\end{eqnarray*}
+Therefore extending the bounds over all nodes $i$, the competitive
+ratio is at least $1-\frac{1}{e}$.
+
+\textbf{\textit{Exercise:}}\textit{ Convert the above analysis of
+the competitive ratio to a primal-dual proof.}
+
+
+\section{Ranking Algorithm}
+
+
+\subsection{Algorithm}
+
+Consider a new online matching problem where a permutation $\pi:\left[n\right]\rightarrow\left[n\right]$
+is picked uniformly at random, where $n$ is the number of nodes on
+the left. When $j$ on the right arrives match it to
+\[
+\mbox{argmin}_{i:i\sim j}\left\{ \pi(i):\, i\mbox{ is not yet matched}\right\} .
+\]
+
+
+An equivalent description is for each node $i$ on the left to pick
+a $Y_{i}\sim\left[0,1\right]$, uniformly at random. When $j$ on
+the right arrives match it to
+\[
+\mbox{argmin}_{i:i\sim j}\left\{ Y_{i}:\, i\mbox{ is not yet matched}\right\} .
+\]
+
+
+We consider the $Y_{i}$'s as {}``ranking'' the nodes on the left
+from $1$ to $n$, i.e., $\forall i,i'$ if $Y_{i}\leq Y_{i'}$ then
+$M(i)\leq M(i')$, where $M:\left[n\right]\rightarrow\left[n\right]$
+is the {}``rank''. 
+
+
+\subsection{Charging Policy}
+
+For each $j$ if $j$ is matched to $i$ then set $\alpha_{i}=g(Y_{i})$
+and $\beta_{j}=1-g(Y_{i})$.
+
+
+\subsection{Analysis of Competitive Ratio}
+
+Fix the randomly assigned value of all nodes $i'\neq i$, i.e., all
+$Y_{i'}$ is fixed for $i'\neq i$. Consider the effect of the matching
+on $i$ for $Y_{i}$ taken from $0$ to $1$. As $Y_{i}$ increases
+from $0$ to $1$ then its rank against the other nodes will increase.
+Let $y_{i}^{f}$ be the maximum $Y_{i}$ value such that any larger
+$Y_{i}$ doesn't change $i$'s rank, and therefore its match. Thus,
+the expected value of $\alpha_{i}$ over all $Y_{i}$ is
+\[
+\mathbb{E}_{y_{i}}\left[\alpha_{i}\right]=\int_{0}^{y_{i}^{f}}g(y)dy=g(y_{i}^{f})-\frac{1}{e}.
+\]
+
+
+If $j$ is matched to node $i$ when $Y_{i}=y_{i}^{f}$ then decreasing
+$Y_{i}$ will serve to improve the rank of $i$ (decrease $M(i)$).
+Consequently, $j$ may be matched to say $i'$ which was previously
+higher in the ranking ($M(i')\leq M(i)$) with a $Y_{i'}\leq y_{i}^{f}$.
+Therefore, $\beta_{j}$ can only get larger i.e., $\beta_{j}\geq1-g(y_{i}^{f})$.
+
+It follows that $\mathbb{E}_{y_{i}}\left[\alpha_{i}+\beta_{j}\right]\geq1-\frac{1}{e}$
+and the competitive ratio is at least $1-\frac{1}{e}$.
+
+
+\section{Vertex Weight Bipartite Matching Problem}
+
+Consider an adaptation of the ranking algorithm problem by assigned
+a matching profit of $v_{i}\in\mathbb{R}_{+}$, when a node $i$ on
+the left is matched. The objective of the primal problem is consequently
+\[
+\mbox{\ensuremath{\max}}\sum_{\mbox{\ensuremath{\forall}i}\mbox{ matched}}v_{i}.
+\]
+
+
+
+\subsection{Charging Policy}
+
+For each $j$ if $j$ is matched to $i$ then set $\alpha_{i}=g(Y_{i})v_{i}$
+and $\beta_{j}=\left(1-g(Y_{i})\right)v_{i}$.
+
+\textbf{\textit{Exercise:}}\textit{ Extend the algorithm and analysis
+of the ranking algorithm to the vertex weighted bipartite matching
+problem.}
+\end{document}

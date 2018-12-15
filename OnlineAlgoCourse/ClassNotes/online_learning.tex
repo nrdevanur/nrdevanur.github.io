@@ -1,0 +1,213 @@
+\section{Online Learning}
+Also called ``learning from experts'' or ``experts problem''. 
+An example problem would be stock picking.
+
+\textbf{Setup:}
+\begin{itemize}
+\item $N$ experts
+\item Algorithm picks an expert
+\item $\forall$ expert $i$, he receives a payoff of $V_{i} \in [0,1]$
+\item Goal: maximize the total payoff of the alogrithm
+\end{itemize}
+
+\subsection{Differences from Online Matchine}
+\label{sec:diff-from-online}
+
+\begin{itemize}
+\item We make a choice \textit{before} we see the payoffs, rather than in online matching where we see the weights first
+\item In online matching, there are global contraints which constrain what we pick accross time. In Online Learning, there are only local constraints (pick 1 expert per round)
+\end{itemize}
+
+\subsection{Analysis}
+\texttt{OPT} $:=$ optimum solution in hindsight. Every round pick the best expert.
+
+\subsubsection{Deterministic Algorithm}
+\label{sec:determ-algor}
+Assume there are 2 experts.
+Let Algo. pick 1.
+\begin{itemize}
+\item In the \textbf{worst} case, $V_{1} = 0$. 
+In the \textbf{worst} repeated case, we pick the worst expert every time and get $V_{1} = 0$ every time.
+\end{itemize}
+
+
+\subsubsection{Randomized Algorithm}
+\label{sec:randomized-algorithm}
+\begin{itemize}
+\item Algo pick between experts 1 and 2 where $p_{1} = p_{2} = \frac{1}{2}$.
+\item $V_{1}= 0, V_{2} = 2$, \texttt{ALG} $ = \frac{1}{2}$, $\mathtt{OPT} = 1$
+\end{itemize}
+
+With $N$ experts, 
+\begin{itemize}
+\item algo picks expert $i$ w.p. $p_{i}$
+\item In the worst case, everyone is 0 except for the expert $i$ with smallest $p_{i}$. 
+\item In this case, $\mathtt{ALG} = \frac{1}{n}$ whereas $\mathtt{OPT} = 1$.
+\end{itemize}
+
+What is happening is that $\mathtt{OPT}$ is too powerful, since it can pick the best one every single time.
+Thus there is no way to compete with it.
+So what we do is compete with a weakened $\mathtt{OPT}$.
+We constrain $\mathtt{OPT}$ to ``stick to one expert''.
+Thus, this constrained $\mathtt{OPT}$ does not have foresight.
+
+\begin{equation}
+  \label{eq:new-opt}
+  \mathtt{OPT} = \max_{i} \left\{ \sum_{t=1}^{T} V_{i,t} \right\}
+\end{equation}
+
+Denote:
+\begin{equation}
+  \label{eq:wi}
+  w_{i} = \sum_{t=1}^{T} V_{i,t}
+\end{equation}
+where $w_{i}$ is how well expert $i$ does over the period $T$.
+
+We define regret
+\begin{equation}
+  \label{eq:regret}
+  \mbox{Regret} = \mathtt{OPT} - \mathtt{ALG}.
+\end{equation}
+
+Thus, we have an a-priori bound on opt.
+If $\mathtt{ALG} = 0$, then $\mathtt{OPT} = T$.
+What we want is Regret$(T) = o(T)$.
+\begin{equation}
+  \label{eq:regret-behaviour}
+  \frac{\mbox{regret}(T)}{T} \rightarrow 0 ~,~ \mbox{as}~ T \rightarrow \infty
+\end{equation}
+
+\begin{equation}
+  \label{eq:alg_opt}
+\frac{\mathtt{ALG}}{T} \rightarrow \frac{\mathtt{OPT}}{T} \mbox{as}~ T \rightarrow \infty
+\end{equation}
+
+Define
+\begin{equation}
+  \label{eq:phifn}
+  \phi(w_{1},...,w_{n}) = \frac{1}{\lambda} \log \sum_{i} e^{\lambda w_{i}}
+\end{equation}
+where the interpretation is that it is a ``smooth approximation to $\max$'' where $\lambda$ controlls the smoothness and the error.
+
+\begin{lemma}{$\phi \geq \mathtt{OPT}$}
+  \textbf{Proof:} $\frac{1}{\lambda} \log \sum_{i} e^{\lambda w_{i}} \geq \frac{1}{\lambda} \log \left[ \max_{i} e^{\lambda w_{i}} \right] = \frac{1}{\lambda} \log e^{\lambda \mathtt{OPT}} = \mathtt{OPT}$
+\end{lemma}
+
+The idea is that as $\lambda \uparrow$, error $\downarrow$.
+
+\begin{lemma}{$\phi \leq \mathtt{OPT} + \frac{1}{\lambda} \log n$.}
+\textbf{Proof:}  $\frac{1}{\lambda} \log \sum_{i} e^{\lambda w_{i}}$. We now replace each term inside by the max. $\leq \frac{1}{\lambda} \log \left[ \sum_{i} e ^{\lambda \mathtt{OPT}} \right] = \frac{1}{\lambda} \log (n e^{\lambda \mathtt{OPT}} = \frac{1}{\lambda} \log n + \mathtt{OPT}$.
+\end{lemma}
+
+Now, think of $\phi(\cdot)$ as the objective function and try to optimize $\phi(\cdot)$.
+Why can we not pick a huge $\lambda$ for tiny error? Because the smoothness goes down.
+
+Since $\phi = \mathbb{R}^{n} \rightarrow \mathbb{R}$, $\Delta \phi:\mathbb{R}^{n} \rightarrow \mathbb{R}.$ $\Delta \rightarrow = \left( \frac{\partial \phi}{\partial w_{1}}, ..., \frac{\partial \phi}{\partial w_{n}} \right)$. Integrating the value of the gradient from $t=0$ to $t=1$ of $w(t)$
+
+\begin{theorem}
+$w:[0,1]\rightarrow \mathbb{R}^{n}$. 
+\begin{equation*}
+  \int_{t=0}^{t=1} < \Delta \phi, \frac{dw}{dt}> dt = \phi(w(1)) - \phi(w(0))
+\end{equation*}
+By the chain rule
+\begin{equation*}
+  \frac{d \phi}{d t} = sum_{i} \frac{\partial \phi}{\partial w_{i}} \frac{d w_{i}}{d_{t}} = <\Delta \phi, dw/dt>
+\end{equation*}
+The LHS $= \int_{t=0}^{t=1} \frac{d \phi}{dt} dt = \phi(w(1)) - \phi(w(0))$.
+\end{theorem}
+
+Suppose we made a ``jump''.
+\begin{theorem}
+\label{theorem:small-jump}
+\begin{equation*}
+  <\Delta \phi(w(0)), w(1) - w(0) > \geq \phi(w(1)) - \phi(w(0)) - \lambda
+\end{equation*}
+if $||w(1) - w(0)||_{\infty} \leq 1$ (bounding the step size to be less than $1$.  
+\end{theorem}
+Note: Since $\phi$ is convex,
+$<\Delta \phi(w(0)), w(1) - w(0)>$ $\leq \phi(w(1)) - \phi(w(0))$.
+
+To make this precise, we first define a lemma that sees the gradient as a probability distribution:
+\begin{lemma}{Gradient as a probability distribution.}
+  $\sum_{i} \Delta_{i} \phi(w) = 1$. \textbf{Proof:} $\frac{\partial \phi}{\partial w_{i}} = \frac{1}{\lambda} \frac{1}{\sum_{j=1}^{n} e^{\lambda w_{j}}} \lambda e^{\lambda w_{i}} = \frac{1}{\sum_{j=1}^{n} } \sum_{i} e^{\lambda w_{i}} = 1$.
+\end{lemma}
+
+Given the above lemma, we can define the algorithm:
+\begin{equation*}
+  w_{i,t} = \sum_{t'=1}^{t} v_{i,t'}
+\end{equation*}
+and denote vector
+$\vec{w_{t}} = (w_{it})_{i=1,...,n}$ and $w_{0} = (0,...,0)$.
+\begin{itemize}
+\item In round $t$, pick expert $i$ w.p. $\frac{\partial \phi}{\partial w_{i}} (\vec{w_{t-1}})$.
+\item $\vec{w_{t}} = \vec{w_{t-1}} + \vec{v_{t}}$
+\end{itemize}
+\begin{equation}
+  \label{eq:exp-alg}
+  E[\mathtt{ALG}] = \sum_{t=1}^{T} < \Delta \phi(\vec{w_{t-1}}, \vec{v_{t}}> \geq \sum_{t=1}^{T}[ \phi(\vec{w_{t}}) - \phi(\vec{w_{t-1}}) - \lambda] = \phi(\vec{w_{T}}) - \phi(\vec{w_{0}}) - \lambda T
+\end{equation}
+
+Thus
+\begin{equation}
+  \label{eq:my-regret}
+  \mbox{regret} = \mathtt{OPT} - \mathtt{ALG} \leq \phi(\vec{w_{T}}) - \mathtt{ALG} \leq \phi(\vec{w_{0}}) + \lambda T = \frac{1}{\lambda} \log n + \lambda T
+\end{equation}
+
+We want to minimize Eq. (\ref{eq:my-regret}) so that $\frac{1}{\lambda} \log n  = \lambda T \Rightarrow \lambda^{2} = \frac{\log n}{T}$.
+$\lambda = \sqrt{\log n/T}$, and thus $\mbox{regret} = 2 \sqrt{T \log n}$.
+
+
+\subsubsection{Proof of Thm. \ref{theorem:small-jump}: }
+$\phi(w(1)) - \phi(w(0)) = \frac{1}{\lambda} \log \sum_{i} e^{\lambda w_{1,i}} - \frac{1}{\lambda} \log \sum_{i} e^{\lambda w_{0i}} = \frac{1}{\lambda} \log \left[ \frac{\sum_{i} e^{\lambda w_{1i}}}{\sum_{i}e^{\lambda w_{0i}}} \right]  =\frac{1}{\lambda} \log \left[ \frac{\sum_{i} e^{\lambda w_{1i} + \lambda \Delta w_{i}}}{\sum_{i}e^{\lambda w_{0i}}} \right]$. Note that $\sum_{i} \mu_{i} = 1$, so we can take a convex combination of $\lambda_{i}$'s.
+$=\frac{1}{\lambda} \log [ \sum_{i} \mu_{i} e^{\lambda_{i}}] = e^{\lambda[\phi(w(1)) - \phi(w(0))]} = \sum_{i} \mu_{i} e^{\lambda_{i}}$.
+
+How are we going to use this? Consider the line going from $0$ to $\lambda_{i}$.
+$\sum_{i} \mu_{i} \lambda_{i} = \hat \lambda \leq \lambda$ $=1 + \frac{e^{\lambda } - 1}{\lambda} \hat \lambda  e^{\lambda^{2}} e^{\hat \lambda}$.
+
+$<\Delta \phi(\vec{w_{0}}), \Delta w> = \sum_{i}  \mu_{i} \lambda_{i}/\lambda = \frac{\hat \lambda}{\lambda}$.
+So we get $e^{\lambda [ \phi(w(1)) - \phi(w(0))]}  \leq e^{\lambda^{2}} e^{\hat \lambda}$. $\phi(w(1)) - \phi(w(0)) \leq \lambda + \frac{\hat \lambda}{\lambda}$.
+
+We claim: If $\lambda > 1$, then the slope of $e^{\lambda}$ at $\lambda = e^{\lambda}$, which is greater than the slope of the line from (0,1) to ($\lambda, e^{\lambda}$). If $\lambda < 1$, then $e^{\lambda} \leq 1 + \lambda + \lambda^{2}$, so $\frac{e^{\lambda} - 1}{\lambda} \leq 1 + \lambda $ so $1 + ((e^{\lambda-1})/\lambda) * \hat \lambda = 1 + \hat \lambda + \lambda \hat \lambda \leq e^{\lambda + \lambda \hat \lambda} \leq e^{\hat \lambda + \lambda^{2}}$.  \qed
+
+
+\subsection{Application of Online Matching to ``boosting''}
+Suppose we have a function that we want to learn.
+$f: X \rightarrow \{-1,+1\}$.
+$f$ is ``is this a cat video?''.
+We do not know what this function looks like, but we want to approximate it by a nice function.
+$H := $ hypothesis class.
+There is a prob. distribution $D$ over $X$.
+We want to approximate $f$ with a function in $H$, where $E_{D}[H] \approxeq E_{D}[f]$.
+
+\textbf{strong learning:} $\forall D$, finds an $h \in H$ s.t.
+\begin{equation}
+  \label{eq:strong-learning}
+  P_{x \in D}[f(x) = h(x)] \geq 1 - \epsilon
+\end{equation}
+
+\textbf{weak learning:} It is similar. For all distributions, it finds an $H$, but the probability
+\begin{equation}
+  \label{eq:weak-learning}
+  P_{x \in D}[f(x) = h(x)] \geq \frac{1}{2} + \delta
+\end{equation}
+This means tha we are doing \textit{slightly better} than random guessing.
+
+What ``boosting'' does is takes a weak learning algorithm and converts it into a strong learning algorithm.
+$D$ is  uniform distribution on $X$, where $X$ is a training set. 
+We know $f(x) \forall x \in X$.
+
+Now consider $X = $ experts. 
+Repeat for $t=1,..,T$
+\begin{itemize}
+\item We want a MWU algorithm $D_{t}$ over $X$
+\item Use WL to get $h_{t} \in H$ s.t. $P_{x \in D_{t}}[ h_{t}(x) = f(x)] \geq \frac{1}{2} + \delta$.
+\item $V_{x,t} = \mathbb{1}\{h_{t}(x) \neq f(x)\}$.
+\end{itemize}
+This is using the weak learning algorithm on many different distributions.
+$SL = h(x) = sgn(\sum_{t} h_{t}(x)) \equiv \mbox{majority}$.
+
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: "online_opt_notes"
+%%% End: 
