@@ -61,8 +61,10 @@ A:hover{text-decoration: underline; color: #ff0000; font-weight: bold;}
 
 <table height="20"> <tbody><tr><td width="100%"> </td></tr></tbody></table>
  <font face="Trebuchet MS" size="3">
- 	Bio: Nikhil R. Devanur is the manager of the <a href="https://www.microsoft.com/en-us/research/group/algorithms-redmond/" >Algorithms group</a>
+ 	Bio: Nikhil R. Devanur is a Principal Scientist at Amazon working on <a href = "https://advertising.amazon.com/products/sponsored-products/?ref_=a20m_us_gw_splm">  Sponsored Products</a>.  	
+ 	Previously, he was the manager of the <a href="https://www.microsoft.com/en-us/research/group/algorithms-redmond/" >Algorithms group</a>
   in <a href="http://research.microsoft.com/" >Microsoft Research</a>, Redmond.
+  <p>
 He is interested in what he calls  <IT> Automated Economics, <IT> which studies the question of how
 technology can be used to improve the efficiency of economic systems.
 His other interest is in <it> Algorithms<it>: he is interested in designing algorithms that are faster, simpler,
@@ -110,6 +112,7 @@ work online or in a distributed fashion, for some of the basic combinatorial opt
 
 <ul>
 	<font face="Trebuchet MS" size="3">
+		<li> Fall 2019: I moved to Amazon as a Principal Scientist. I will be part of the  <a href = "https://advertising.amazon.com/products/sponsored-products/?ref_=a20m_us_gw_splm">  Sponsored Products</a> team. 
         <li> Spring 2019: We are hiring! Please <a href = " https://www.microsoft.com/en-us/research/group/algorithms-redmond/#!opportunities" > apply</a>.
         <li> Spring 2017:  I now manage the newly created <a href="https://www.microsoft.com/en-us/research/group/algorithms-redmond/" >Algorithms group</a> in Micrsoft Research, Redmond. </li>
 <li> I am co-teaching (with Anna Karlin) a <a href = https://courses.cs.washington.edu/courses/cse522/17sp/> course on Algorithms and Uncertainty  </a> at UW this spring quarter, 2017.
@@ -197,6 +200,37 @@ Arrange by  <a href="index-area.html">Area</a>
 </font></td> -->
 </tr></tbody></table>
 <font face="Trebuchet MS" size="3">
+	<!-------------------------------------------------------------->
+	<b>2019</b> <ul>
+		<!-------------------------------------------------------------->
+		<li> <b>
+				Simple and Approximately Optimal Pricing for Proportional Complementarities. </b>
+			[<a href="https://arxiv.org/pdf/1909.00788">arXiv pdf</a>| <a   href = "#PC" onclick="toggle_visibility('absPC');">Show/Hide  Abstract</a>].
+			<br> with Yang Cai, Kira Goldner, and R. Preston McAfee.
+				In Proc. <i>EC 2019</i>.
+				<div id="absPC" style="display:none"><font face="Arial" size="3">
+						<p>
+							We study a new model of complementary valuations, which we call "proportional complementarities.'' In contrast to common models, such as hypergraphic valuations, in our model, we do not assume that the extra value derived from owning a set of items is independent of the buyer's base valuations for the items. Instead, we model the complementarities as proportional to the buyer's base valuations, and these proportionalities are known market parameters.
+							
+							Our goal is to design a simple pricing scheme that, for a single buyer with proportional complementarities, yields approximately optimal revenue. We define a new class of mechanisms where some number of items are given away for free, and the remaining items are sold separately at inflated prices. We find that the better of such a mechanism and selling the grand bundle earns a 12-approximation to the optimal revenue for pairwise proportional complementarities. This confirms the intuition that items should not be sold completely separately in the presence of complementarities. In the more general case, a buyer has a maximum of proportional positive hypergraphic valuations, where a hyperedge in a given hypergraph describes the boost to the buyer's value for item i given by owning any set of items T in addition. The maximum-out-degree of such a hypergraph is d, and k is the positive rank of the hypergraph. For valuations given by these parameters, our simple pricing scheme is an O(min{d,k})-approximation.
+						</p>
+					</font></div>
+			</li>
+
+		<li> <b>PipeDream: Generalized Pipeline Parallelism for DNN Training
+				 </b>
+		<!--	[<a href="https://arxiv.org/pdf/1909.00788">arXiv pdf</a>| --> 
+		[<a   href = "#PPD" onclick="toggle_visibility('absPPD');">Show/Hide  Abstract</a>].
+			<br> with Deepak Narayanan, Aaron Harlap,
+				Amar Phanishayee, Vivek Seshadri,,Greg Ganger, Phil Gibbons, Matei Zaharia.
+				In Proc. <i>SOSP 2019</i>.
+				<div id="absPPD" style="display:none"><font face="Arial" size="3">
+						<p>
+							DNN training is extremely time-consuming, necessitating efficient multi-accelerator parallelization. Current approaches to paralleliz- ing training primarily use intra-batch parallelization, where a single iteration of training is split over the available workers, but suffer from diminishing returns at higher worker counts. We present PipeDream, a system that adds inter-batch pipelining to intra-batch parallelism to further improve parallel training throughput, help- ing to better overlap computation with communication and reduce the amount of communication when possible. PipeDream versions model parameters for backward pass correctness, schedules for- ward and backward passes of different minibatches concurrently on different workers to keep workers well utilized, and systemati- cally partitions DNN layers among workers to balance work and minimize communication. Extensive experimentation with a range of DNN tasks, models, and hardware configurations shows that PipeDream trains models to high accuracy up to 5.28x faster than commonly used inter-batch parallelism techniques.
+						</p>
+					</font></div>
+			</li>
+		</ul>
 <!-------------------------------------------------------------->
 <b>2018</b> <ul>
 <!-------------------------------------------------------------->
